@@ -13,5 +13,11 @@
   "clock": "Ilisasishwa %1",
   "since": "Inakusanywa tangu %1",
   "supplied": "%1 kama chanzo",
-  "dismiss": "Esc kufunga"
+  "dismiss": "Esc kufunga",
+  "activityScanning": "Inatengeneza faharasa · faili %1 zimesomwa · vipande %2",
+  "activityDeduplicating": "Inaondoa urudufu · faili %1 zimekaguliwa · masafa %2 yanalingana",
+  "activityIdle": "Inasubiri · uchanganuzi unaofuata %1",
+  "activityStopped": "Imesimamishwa",
+  "activityUnavailable": "Maendeleo hayapatikani",
+  "activityStale": "Ilisasishwa mara ya mwisho dakika %1 zilizopita"
 }

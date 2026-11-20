@@ -13,5 +13,11 @@
   "clock": "Uuendatud: %1",
   "since": "Kogumine alates %1",
   "supplied": "Allikana: %1",
-  "dismiss": "Sulgemiseks vajuta Esc"
+  "dismiss": "Sulgemiseks vajuta Esc",
+  "activityScanning": "Indekseerimine · loetud faile: %1 · plokke: %2",
+  "activityDeduplicating": "Duplikaatide eemaldamine · kontrollitud faile: %1 · kattuvaid vahemikke: %2",
+  "activityIdle": "Ootel · järgmine skannimine %1",
+  "activityStopped": "Peatatud",
+  "activityUnavailable": "Edenemine pole saadaval",
+  "activityStale": "Viimane uuendus %1 min tagasi"
 }

@@ -13,5 +13,11 @@
   "clock": "Updated %1",
   "since": "Collecting since %1",
   "supplied": "%1 as source",
-  "dismiss": "Esc to close"
+  "dismiss": "Esc to close",
+  "activityScanning": "Indexing · %1 files read · %2 chunks",
+  "activityDeduplicating": "Deduplicating · %1 files checked · %2 ranges matched",
+  "activityIdle": "Waiting · next scan %1",
+  "activityStopped": "Stopped",
+  "activityUnavailable": "Progress is unavailable",
+  "activityStale": "Last update %1 min ago"
 }

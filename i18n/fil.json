@@ -13,5 +13,11 @@
   "clock": "Na-update: %1",
   "since": "Nangongolekta mula %1",
   "supplied": "%1 bilang pinagmulan",
-  "dismiss": "Esc para isara"
+  "dismiss": "Esc para isara",
+  "activityScanning": "Gumagawa ng indeks · %1 file ang nabasa · %2 bloke",
+  "activityDeduplicating": "Inaalis ang dobleng datos · %1 file ang nasuri · %2 magkatugmang saklaw",
+  "activityIdle": "Naghihintay · susunod na pag-scan: %1",
+  "activityStopped": "Nakahinto",
+  "activityUnavailable": "Hindi available ang progreso",
+  "activityStale": "Huling na-update %1 min ang nakalipas"
 }

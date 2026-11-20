@@ -13,5 +13,11 @@
   "clock": "Actualitzat: %1",
   "since": "Recollida de dades des de %1",
   "supplied": "Com a origen: %1",
-  "dismiss": "Esc per tancar"
+  "dismiss": "Esc per tancar",
+  "activityScanning": "Indexant · fitxers llegits: %1 · blocs: %2",
+  "activityDeduplicating": "Deduplicant · fitxers comprovats: %1 · intervals coincidents: %2",
+  "activityIdle": "En espera · proper escaneig: %1",
+  "activityStopped": "Aturat",
+  "activityUnavailable": "El progrés no està disponible",
+  "activityStale": "Última actualització fa %1 min"
 }

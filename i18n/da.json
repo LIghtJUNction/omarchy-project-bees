@@ -13,5 +13,11 @@
   "clock": "Opdateret: %1",
   "since": "Indsamling siden %1",
   "supplied": "Som kilde: %1",
-  "dismiss": "Esc for at lukke"
+  "dismiss": "Esc for at lukke",
+  "activityScanning": "Indekserer · %1 filer læst · %2 blokke",
+  "activityDeduplicating": "Deduplikerer · %1 filer kontrolleret · %2 matchende områder",
+  "activityIdle": "Venter · næste scanning %1",
+  "activityStopped": "Stoppet",
+  "activityUnavailable": "Fremdrift er ikke tilgængelig",
+  "activityStale": "Sidst opdateret for %1 min siden"
 }

@@ -13,5 +13,11 @@
   "clock": "更新於 %1",
   "since": "自 %1 起統計",
   "supplied": "作為來源 %1",
-  "dismiss": "Esc 關閉"
+  "dismiss": "Esc 關閉",
+  "activityScanning": "正在建立索引 · 已讀取 %1 個檔案 · %2 個資料區塊",
+  "activityDeduplicating": "正在去重 · 已檢查 %1 個檔案 · 比對成功 %2 個範圍",
+  "activityIdle": "等待中 · 下次掃描 %1",
+  "activityStopped": "已停止",
+  "activityUnavailable": "暫無執行進度",
+  "activityStale": "上次更新於 %1 分鐘前"
 }

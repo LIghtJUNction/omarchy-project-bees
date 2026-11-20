@@ -13,5 +13,11 @@
   "clock": "Posodobljeno: %1",
   "since": "Zbiranje podatkov od %1",
   "supplied": "%1 kot vir",
-  "dismiss": "Esc za zapiranje"
+  "dismiss": "Esc za zapiranje",
+  "activityScanning": "Indeksiranje · prebrane datoteke: %1 · bloki: %2",
+  "activityDeduplicating": "Odstranjevanje dvojnikov · preverjene datoteke: %1 · ujemajoči se obsegi: %2",
+  "activityIdle": "Čakanje · naslednji pregled %1",
+  "activityStopped": "Ustavljeno",
+  "activityUnavailable": "Podatki o napredku niso na voljo",
+  "activityStale": "Zadnja posodobitev pred %1 min"
 }

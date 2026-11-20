@@ -13,5 +13,11 @@
   "clock": "Actualizado: %1",
   "since": "Recopilando desde %1",
   "supplied": "Como origen: %1",
-  "dismiss": "Esc para cerrar"
+  "dismiss": "Esc para cerrar",
+  "activityScanning": "Indexando · %1 archivos leídos · %2 bloques",
+  "activityDeduplicating": "Deduplicando · %1 archivos revisados · %2 rangos coincidentes",
+  "activityIdle": "En espera · próximo análisis: %1",
+  "activityStopped": "Detenido",
+  "activityUnavailable": "El progreso no está disponible",
+  "activityStale": "Última actualización hace %1 min"
 }

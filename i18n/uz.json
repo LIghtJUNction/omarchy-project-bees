@@ -13,5 +13,11 @@
   "clock": "Yangilandi: %1",
   "since": "%1 dan beri yigʻilmoqda",
   "supplied": "Manba sifatida %1",
-  "dismiss": "Yopish uchun Esc"
+  "dismiss": "Yopish uchun Esc",
+  "activityScanning": "Indeks tuzilmoqda · %1 ta fayl oʻqildi · %2 ta blok",
+  "activityDeduplicating": "Takroriy maʼlumotlar birlashtirilmoqda · %1 ta fayl tekshirildi · %2 ta oraliq mos keldi",
+  "activityIdle": "Kutilmoqda · keyingi tekshiruv %1",
+  "activityStopped": "Toʻxtatilgan",
+  "activityUnavailable": "Jarayon haqida maʼlumot mavjud emas",
+  "activityStale": "Soʻnggi yangilanish %1 daqiqa oldin"
 }

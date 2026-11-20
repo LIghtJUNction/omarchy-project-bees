@@ -13,5 +13,11 @@
   "clock": "Bijgewerkt: %1",
   "since": "Verzameld sinds %1",
   "supplied": "Als bron: %1",
-  "dismiss": "Esc om te sluiten"
+  "dismiss": "Esc om te sluiten",
+  "activityScanning": "Indexeren · %1 bestanden gelezen · %2 blokken",
+  "activityDeduplicating": "Dedupliceren · %1 bestanden gecontroleerd · %2 overeenkomende bereiken",
+  "activityIdle": "Wachten · volgende scan %1",
+  "activityStopped": "Gestopt",
+  "activityUnavailable": "Voortgang niet beschikbaar",
+  "activityStale": "Laatst bijgewerkt: %1 min geleden"
 }

@@ -13,5 +13,11 @@
   "clock": "Aktualizované: %1",
   "since": "Zber údajov od %1",
   "supplied": "%1 ako zdroj",
-  "dismiss": "Esc na zatvorenie"
+  "dismiss": "Esc na zatvorenie",
+  "activityScanning": "Indexovanie · prečítané súbory: %1 · bloky: %2",
+  "activityDeduplicating": "Deduplikácia · skontrolované súbory: %1 · zhodné rozsahy: %2",
+  "activityIdle": "Čakanie · ďalšie skenovanie %1",
+  "activityStopped": "Zastavené",
+  "activityUnavailable": "Priebeh nie je dostupný",
+  "activityStale": "Posledná aktualizácia pred %1 min"
 }

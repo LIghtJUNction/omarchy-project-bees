@@ -13,5 +13,11 @@
   "clock": "Zaktualizowano: %1",
   "since": "Zbieranie danych od %1",
   "supplied": "Jako źródło: %1",
-  "dismiss": "Esc, aby zamknąć"
+  "dismiss": "Esc, aby zamknąć",
+  "activityScanning": "Indeksowanie · odczytane pliki: %1 · bloki: %2",
+  "activityDeduplicating": "Deduplikacja · sprawdzone pliki: %1 · zgodne zakresy: %2",
+  "activityIdle": "Oczekiwanie · następne skanowanie: %1",
+  "activityStopped": "Zatrzymano",
+  "activityUnavailable": "Postęp jest niedostępny",
+  "activityStale": "Ostatnia aktualizacja %1 min temu"
 }

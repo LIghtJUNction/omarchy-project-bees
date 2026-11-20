@@ -1,6 +1,6 @@
 # Project Bees for Omarchy
 
-![Project Bees dashboard with synthetic repository data](https://github.com/LIghtJUNction/omarchy-project-bees/releases/download/v0.1.1/dashboard.jpg)
+![Project Bees dashboard with synthetic repository data](https://github.com/LIghtJUNction/omarchy-project-bees/releases/download/v0.1.2/dashboard.jpg)
 
 A native dashboard for [project-bees](https://github.com/LIghtJUNction/project-bees).
 The bar shows cumulative newly shared data. Click it to view size-ranked
@@ -10,7 +10,8 @@ language. Its interface is translated into all 50 Omarchy languages.
 
 ## Install
 
-Requires Omarchy 4.5 or later and project-bees 0.1 or later. On Arch and Omarchy:
+Requires Omarchy 4.5 or later and project-bees 0.1 or later. Activity reporting
+requires project-bees 0.1.1 or later. On Arch and Omarchy:
 
 ```sh
 yay -S project-bees
@@ -35,9 +36,24 @@ bar widget update immediately, including number and date formatting. Arabic,
 Hebrew, Persian, and Urdu mirror the interface; repository paths and pair
 directions keep their left-to-right order.
 
-Translation catalogs live in `i18n/`. Each catalog contains the same 15 keys
-as `en.json`, with `%1` placeholders preserved. Omarchy falls back to English
+Translation catalogs live in `i18n/`. Each catalog contains the same 21 keys
+as `en.json`, with numbered placeholders preserved. Omarchy falls back to English
 for an unknown language or a missing translation.
+
+## Activity
+
+The status line shows the latest reported phase: indexing, deduplicating,
+waiting for the next scan, or stopped. During indexing it shows files read
+and chunks indexed; during deduplication it shows files checked and ranges
+matched. These counters describe the current pass, while the large newly
+shared total keeps its history.
+
+The daemon finishes indexing before it starts deduplication. On the first
+pass, the total can remain zero while indexing progresses. No percentage or
+remaining-time estimate is shown because the complete workload is not known.
+An old active snapshot shows its age instead of an active phase. A snapshot
+without activity data still displays its totals and reports progress as
+unavailable.
 
 ## Data access
 

@@ -13,5 +13,11 @@
   "clock": "Actualizat la %1",
   "since": "Colectare din %1",
   "supplied": "%1 ca sursă",
-  "dismiss": "Esc pentru închidere"
+  "dismiss": "Esc pentru închidere",
+  "activityScanning": "Indexare · %1 fișiere citite · %2 blocuri",
+  "activityDeduplicating": "Deduplicare · %1 fișiere verificate · %2 intervale identice",
+  "activityIdle": "În așteptare · următoarea scanare %1",
+  "activityStopped": "Oprit",
+  "activityUnavailable": "Progresul nu este disponibil",
+  "activityStale": "Ultima actualizare acum %1 min"
 }

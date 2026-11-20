@@ -13,5 +13,11 @@
   "clock": "Diperbarui %1",
   "since": "Dikumpulkan sejak %1",
   "supplied": "%1 sebagai sumber",
-  "dismiss": "Esc untuk menutup"
+  "dismiss": "Esc untuk menutup",
+  "activityScanning": "Mengindeks · %1 berkas dibaca · %2 blok",
+  "activityDeduplicating": "Deduplikasi · %1 berkas diperiksa · %2 rentang cocok",
+  "activityIdle": "Menunggu · pemindaian berikutnya %1",
+  "activityStopped": "Dihentikan",
+  "activityUnavailable": "Progres tidak tersedia",
+  "activityStale": "Terakhir diperbarui %1 menit lalu"
 }

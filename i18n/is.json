@@ -13,5 +13,11 @@
   "clock": "Uppfært: %1",
   "since": "Söfnun frá %1",
   "supplied": "Sem uppruni: %1",
-  "dismiss": "Esc til að loka"
+  "dismiss": "Esc til að loka",
+  "activityScanning": "Bý til atriðaskrá · lesnar skrár: %1 · gagnabútar: %2",
+  "activityDeduplicating": "Sameina tvítekin gögn · yfirfarnar skrár: %1 · samsvarandi gagnasvið: %2",
+  "activityIdle": "Bíð · næsta skönnun %1",
+  "activityStopped": "Stöðvað",
+  "activityUnavailable": "Framvinda er ekki tiltæk",
+  "activityStale": "Síðast uppfært fyrir %1 mín."
 }

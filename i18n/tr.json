@@ -13,5 +13,11 @@
   "clock": "Güncellendi: %1",
   "since": "%1 tarihinden beri toplanıyor",
   "supplied": "Kaynak olarak %1",
-  "dismiss": "Kapatmak için Esc"
+  "dismiss": "Kapatmak için Esc",
+  "activityScanning": "Dizin oluşturuluyor · %1 dosya okundu · %2 blok",
+  "activityDeduplicating": "Tekilleştiriliyor · %1 dosya denetlendi · %2 aralık eşleşti",
+  "activityIdle": "Bekleniyor · sonraki tarama %1",
+  "activityStopped": "Durduruldu",
+  "activityUnavailable": "İlerleme bilgisi mevcut değil",
+  "activityStale": "Son güncelleme %1 dk önce"
 }

@@ -25,6 +25,11 @@ FocusScope {
   readonly property var pairs: snapshot ? snapshot.pairs : []
   readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0)
   readonly property var rows: filteredRows()
+  readonly property var activity: Stats.activity(snapshot)
+  property double nowSeconds: Date.now() / 1000
+  readonly property bool activityStale: activity !== null && activity.phase !== "stopped"
+    && nowSeconds > Math.max(snapshot.updatedAt + 180,
+      activity.phase === "idle" ? activity.nextScanAt + 120 : 0)
   signal closeRequested()
 
   LayoutMirroring.enabled: rightToLeft
@@ -35,7 +40,39 @@ FocusScope {
     directory: Qt.resolvedUrl("i18n")
   }
 
+  Timer {
+    interval: 15000
+    repeat: true
+    running: root.visible && root.snapshot !== null
+    onTriggered: root.nowSeconds = Date.now() / 1000
+  }
+
+  onSnapshotChanged: nowSeconds = Date.now() / 1000
+  onVisibleChanged: if (visible) nowSeconds = Date.now() / 1000
+
   function focusSearch() { search.forceActiveFocus() }
+
+  function activityText() {
+    if (!activity) return strings.t("activityUnavailable")
+    if (activityStale) return strings.t("activityStale").arg(Commons.I18n.formatNumber(
+      Math.max(1, Math.floor((nowSeconds - snapshot.updatedAt) / 60)), 0))
+    switch (activity.phase) {
+    case "scanning":
+      return strings.t("activityScanning")
+        .arg(Commons.I18n.formatNumber(activity.hashedFiles, 0))
+        .arg(Commons.I18n.formatNumber(activity.indexedChunks, 0))
+    case "deduplicating":
+      return strings.t("activityDeduplicating")
+        .arg(Commons.I18n.formatNumber(activity.processedFiles, 0))
+        .arg(Commons.I18n.formatNumber(activity.matchedRanges, 0))
+    case "idle":
+      return strings.t("activityIdle").arg(new Date(activity.nextScanAt * 1000)
+        .toLocaleTimeString(locale, "HH:mm"))
+    case "stopped":
+      return strings.t("activityStopped")
+    }
+    return strings.t("activityUnavailable")
+  }
 
   function filteredRows() {
     const source = tab === 0 ? projects : pairs
@@ -246,6 +283,15 @@ FocusScope {
       id: filters
       Layout.fillWidth: true
       spacing: 8
+      Label {
+        objectName: "activityStatus"
+        Layout.fillWidth: true
+        visible: root.snapshot !== null
+        text: root.activityText()
+        color: root.dim
+        font.pixelSize: root.smallSize
+        wrapMode: Text.WordWrap
+      }
       RowLayout {
         Layout.fillWidth: true
         spacing: 8

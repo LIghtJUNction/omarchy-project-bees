@@ -13,5 +13,11 @@
   "clock": "به‌روزرسانی: %1",
   "since": "جمع‌آوری از %1",
   "supplied": "%1 به‌عنوان منبع",
-  "dismiss": "Esc برای بستن"
+  "dismiss": "Esc برای بستن",
+  "activityScanning": "نمایه‌سازی · %1 فایل خوانده شده · %2 قطعه",
+  "activityDeduplicating": "حذف داده‌های تکراری · %1 فایل بررسی شده · %2 بازهٔ منطبق",
+  "activityIdle": "در انتظار · پیمایش بعدی %1",
+  "activityStopped": "متوقف شده",
+  "activityUnavailable": "پیشرفت در دسترس نیست",
+  "activityStale": "آخرین به‌روزرسانی %1 دقیقه پیش"
 }

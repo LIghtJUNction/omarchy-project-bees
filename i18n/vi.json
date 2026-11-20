@@ -13,5 +13,11 @@
   "clock": "Cập nhật lúc %1",
   "since": "Thu thập từ %1",
   "supplied": "%1 với vai trò nguồn",
-  "dismiss": "Esc để đóng"
+  "dismiss": "Esc để đóng",
+  "activityScanning": "Đang lập chỉ mục · đã đọc %1 tệp · %2 khối",
+  "activityDeduplicating": "Đang khử trùng lặp · đã kiểm tra %1 tệp · %2 vùng khớp",
+  "activityIdle": "Đang chờ · lần quét tiếp theo %1",
+  "activityStopped": "Đã dừng",
+  "activityUnavailable": "Không có thông tin tiến độ",
+  "activityStale": "Cập nhật gần nhất cách đây %1 phút"
 }

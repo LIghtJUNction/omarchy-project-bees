@@ -13,5 +13,11 @@
   "clock": "עודכן: %1",
   "since": "הנתונים נאספים מאז %1",
   "supplied": "%1 כמקור",
-  "dismiss": "Esc לסגירה"
+  "dismiss": "Esc לסגירה",
+  "activityScanning": "יצירת אינדקס · %1 קבצים נקראו · %2 מקטעים",
+  "activityDeduplicating": "הסרת כפילויות · %1 קבצים נבדקו · %2 טווחים תואמים",
+  "activityIdle": "בהמתנה · הסריקה הבאה ב־%1",
+  "activityStopped": "נעצר",
+  "activityUnavailable": "אין מידע על ההתקדמות",
+  "activityStale": "העדכון האחרון היה לפני %1 דקות"
 }

@@ -13,5 +13,11 @@
   "clock": "更新: %1",
   "since": "%1 から集計",
   "supplied": "共有元として %1",
-  "dismiss": "Esc で閉じる"
+  "dismiss": "Esc で閉じる",
+  "activityScanning": "インデックス作成中 · %1 ファイル読み込み済み · %2 チャンク",
+  "activityDeduplicating": "重複排除中 · %1 ファイル確認済み · %2 範囲が一致",
+  "activityIdle": "待機中 · 次のスキャン %1",
+  "activityStopped": "停止中",
+  "activityUnavailable": "進捗情報を取得できません",
+  "activityStale": "最終更新は %1 分前"
 }

@@ -13,5 +13,11 @@
   "clock": "Nuashonraithe: %1",
   "since": "Bailiú ó %1",
   "supplied": "Mar fhoinse: %1",
-  "dismiss": "Esc le dúnadh"
+  "dismiss": "Esc le dúnadh",
+  "activityScanning": "Ag innéacsú · comhaid léite: %1 · bloic: %2",
+  "activityDeduplicating": "Ag dí-dhúbláil · comhaid seiceáilte: %1 · raonta comhoiriúnacha: %2",
+  "activityIdle": "Ag fanacht · an chéad scanadh eile: %1",
+  "activityStopped": "Stoptha",
+  "activityUnavailable": "Níl dul chun cinn ar fáil",
+  "activityStale": "Nuashonrú deireanach %1 nóiméad ó shin"
 }

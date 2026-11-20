@@ -13,5 +13,11 @@
   "clock": "Aktualizováno: %1",
   "since": "Sběr dat od %1",
   "supplied": "Jako zdroj: %1",
-  "dismiss": "Esc zavře panel"
+  "dismiss": "Esc zavře panel",
+  "activityScanning": "Indexování · přečtené soubory: %1 · bloky: %2",
+  "activityDeduplicating": "Odstraňování duplicit · zkontrolované soubory: %1 · shodné rozsahy: %2",
+  "activityIdle": "Čekání · další skenování v %1",
+  "activityStopped": "Zastaveno",
+  "activityUnavailable": "Průběh není k dispozici",
+  "activityStale": "Poslední aktualizace před %1 min"
 }

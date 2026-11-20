@@ -13,5 +13,11 @@
   "clock": "Atjaunināts: %1",
   "since": "Dati tiek vākti kopš %1",
   "supplied": "Kā avots: %1",
-  "dismiss": "Esc, lai aizvērtu"
+  "dismiss": "Esc, lai aizvērtu",
+  "activityScanning": "Indeksēšana · nolasīti faili: %1 · bloki: %2",
+  "activityDeduplicating": "Dublikātu noņemšana · pārbaudīti faili: %1 · atbilstoši diapazoni: %2",
+  "activityIdle": "Gaida · nākamā skenēšana %1",
+  "activityStopped": "Apturēts",
+  "activityUnavailable": "Norise nav pieejama",
+  "activityStale": "Pēdējais atjauninājums pirms %1 min"
 }

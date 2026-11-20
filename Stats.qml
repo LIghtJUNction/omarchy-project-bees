@@ -62,6 +62,20 @@ Item {
         && validNumber(row.bytes) && validNumber(row.toA) && row.toA <= row.bytes)
   }
 
+  // Activity is optional and must never hide valid historical totals.
+  function activity(report) {
+    const value = report ? report.activity : null
+    if (value === null || typeof value !== "object" || Array.isArray(value)
+      || !["scanning", "deduplicating", "idle", "stopped"].includes(value.phase)) return null
+
+    const counters = ["phaseStartedAt", "repositories", "scannedFiles", "hashedFiles", "indexedChunks",
+      "processedFiles", "matchedRanges", "rejectedRanges", "nextScanAt"]
+    if (!counters.every(key => validNumber(value[key]))) return null
+    if (value.phase === "idle" && (value.nextScanAt === 0
+      || !isFinite(new Date(value.nextScanAt * 1000).getTime()))) return null
+    return value
+  }
+
   function size(bytes) {
     const units = ["B", "KiB", "MiB", "GiB", "TiB", "PiB"]
     let value = Math.max(0, Number(bytes) || 0)

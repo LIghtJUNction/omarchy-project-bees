@@ -13,5 +13,11 @@
   "clock": "Atnaujinta: %1",
   "since": "Duomenys renkami nuo %1",
   "supplied": "Kaip šaltinis: %1",
-  "dismiss": "Esc užveria skydelį"
+  "dismiss": "Esc užveria skydelį",
+  "activityScanning": "Indeksuojama · perskaityta failų: %1 · blokų: %2",
+  "activityDeduplicating": "Šalinami dublikatai · patikrinta failų: %1 · sutampančių sričių: %2",
+  "activityIdle": "Laukiama · kitas skenavimas %1",
+  "activityStopped": "Sustabdyta",
+  "activityUnavailable": "Eigos informacija nepasiekiama",
+  "activityStale": "Paskutinis atnaujinimas prieš %1 min."
 }

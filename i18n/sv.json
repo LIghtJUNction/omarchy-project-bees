@@ -13,5 +13,11 @@
   "clock": "Uppdaterad: %1",
   "since": "Samlar in sedan %1",
   "supplied": "Som källa: %1",
-  "dismiss": "Esc för att stänga"
+  "dismiss": "Esc för att stänga",
+  "activityScanning": "Indexerar · %1 filer lästa · %2 block",
+  "activityDeduplicating": "Deduplicerar · %1 filer kontrollerade · %2 matchande områden",
+  "activityIdle": "Väntar · nästa skanning %1",
+  "activityStopped": "Stoppad",
+  "activityUnavailable": "Förloppsinformation saknas",
+  "activityStale": "Senast uppdaterad för %1 min sedan"
 }

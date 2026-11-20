@@ -13,5 +13,11 @@
   "clock": "Aggiornato: %1",
   "since": "Raccolta dal %1",
   "supplied": "Come origine: %1",
-  "dismiss": "Esc per chiudere"
+  "dismiss": "Esc per chiudere",
+  "activityScanning": "Indicizzazione · %1 file letti · %2 blocchi",
+  "activityDeduplicating": "Deduplicazione · %1 file controllati · %2 intervalli corrispondenti",
+  "activityIdle": "In attesa · prossima scansione %1",
+  "activityStopped": "Arrestato",
+  "activityUnavailable": "Avanzamento non disponibile",
+  "activityStale": "Ultimo aggiornamento %1 min fa"
 }

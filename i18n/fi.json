@@ -13,5 +13,11 @@
   "clock": "Päivitetty: %1",
   "since": "Tietoja kerätty alkaen %1",
   "supplied": "Lähteenä: %1",
-  "dismiss": "Sulje painamalla Esc"
+  "dismiss": "Sulje painamalla Esc",
+  "activityScanning": "Indeksoidaan · %1 tiedostoa luettu · %2 lohkoa",
+  "activityDeduplicating": "Poistetaan päällekkäisyyksiä · %1 tiedostoa tarkistettu · %2 vastaavaa aluetta",
+  "activityIdle": "Odotetaan · seuraava tarkistus %1",
+  "activityStopped": "Pysäytetty",
+  "activityUnavailable": "Edistymistietoja ei ole saatavilla",
+  "activityStale": "Viimeksi päivitetty %1 min sitten"
 }

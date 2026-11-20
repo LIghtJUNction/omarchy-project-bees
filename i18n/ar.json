@@ -13,5 +13,11 @@
   "clock": "تم التحديث في %1",
   "since": "تُجمع البيانات منذ %1",
   "supplied": "%1 كمصدر",
-  "dismiss": "Esc للإغلاق"
+  "dismiss": "Esc للإغلاق",
+  "activityScanning": "جارٍ بناء الفهرس · الملفات المقروءة: %1 · الكتل: %2",
+  "activityDeduplicating": "جارٍ إزالة التكرار · الملفات المفحوصة: %1 · النطاقات المتطابقة: %2",
+  "activityIdle": "بانتظار الفحص التالي في %1",
+  "activityStopped": "متوقف",
+  "activityUnavailable": "التقدم غير متاح",
+  "activityStale": "آخر تحديث قبل %1 دقيقة"
 }

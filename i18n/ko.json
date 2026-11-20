@@ -13,5 +13,11 @@
   "clock": "업데이트: %1",
   "since": "%1부터 집계",
   "supplied": "원본으로 제공: %1",
-  "dismiss": "Esc로 닫기"
+  "dismiss": "Esc로 닫기",
+  "activityScanning": "인덱스 생성 중 · %1개 파일 읽음 · %2개 청크",
+  "activityDeduplicating": "중복 제거 중 · %1개 파일 확인 · %2개 범위 일치",
+  "activityIdle": "대기 중 · 다음 검사 %1",
+  "activityStopped": "중지됨",
+  "activityUnavailable": "진행 정보를 확인할 수 없습니다",
+  "activityStale": "마지막 업데이트: %1분 전"
 }

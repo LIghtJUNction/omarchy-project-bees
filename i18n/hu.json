@@ -13,5 +13,11 @@
   "clock": "Frissítve: %1",
   "since": "Adatgyűjtés kezdete: %1",
   "supplied": "Forrásként: %1",
-  "dismiss": "Bezárás: Esc"
+  "dismiss": "Bezárás: Esc",
+  "activityScanning": "Indexelés · %1 beolvasott fájl · %2 blokk",
+  "activityDeduplicating": "Duplikátumok összevonása · %1 ellenőrzött fájl · %2 egyező tartomány",
+  "activityIdle": "Várakozás · következő vizsgálat: %1",
+  "activityStopped": "Leállítva",
+  "activityUnavailable": "Az előrehaladás nem érhető el",
+  "activityStale": "Utolsó frissítés: %1 perce"
 }
