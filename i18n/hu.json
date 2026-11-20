@@ -1,0 +1,17 @@
+{
+  "close": "Bezárás",
+  "total": "Újonnan megosztott adatok",
+  "repos": "Tárolók",
+  "pairs": "Tárolópárok",
+  "search": "Szűrés a tároló elérési útja alapján",
+  "noData": "Várakozás a Project Bees szolgáltatásra",
+  "invalidData": "A statisztikafájl érvénytelen adatokat tartalmaz",
+  "readError": "A statisztikafájl nem olvasható",
+  "noPairs": "Még nincs rögzített egyezés a tárolók között",
+  "noRepos": "Még nincsenek indexelt tárolók",
+  "noMatch": "Nincs egyező elérési út",
+  "clock": "Frissítve: %1",
+  "since": "Adatgyűjtés kezdete: %1",
+  "supplied": "Forrásként: %1",
+  "dismiss": "Bezárás: Esc"
+}

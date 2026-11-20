@@ -1,0 +1,17 @@
+{
+  "close": "Sluiten",
+  "total": "Nieuw gedeelde gegevens",
+  "repos": "Repository’s",
+  "pairs": "Repositoryparen",
+  "search": "Filteren op repositorypad",
+  "noData": "Wachten op de Project Bees-service",
+  "invalidData": "Het statistiekenbestand bevat ongeldige gegevens",
+  "readError": "Het statistiekenbestand kan niet worden gelezen",
+  "noPairs": "Nog geen overeenkomsten tussen repository’s vastgelegd",
+  "noRepos": "Nog geen repository’s geïndexeerd",
+  "noMatch": "Geen overeenkomende paden",
+  "clock": "Bijgewerkt: %1",
+  "since": "Verzameld sinds %1",
+  "supplied": "Als bron: %1",
+  "dismiss": "Esc om te sluiten"
+}

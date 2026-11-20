@@ -1,0 +1,17 @@
+{
+  "close": "Užverti",
+  "total": "Nauji bendrinami duomenys",
+  "repos": "Saugyklos",
+  "pairs": "Saugyklų poros",
+  "search": "Filtruoti pagal saugyklos kelią",
+  "noData": "Laukiama Project Bees tarnybos",
+  "invalidData": "Statistikos faile yra netinkamų duomenų",
+  "readError": "Nepavyko perskaityti statistikos failo",
+  "noPairs": "Atitikmenų tarp saugyklų dar neužregistruota",
+  "noRepos": "Dar nėra indeksuotų saugyklų",
+  "noMatch": "Atitinkančių kelių nėra",
+  "clock": "Atnaujinta: %1",
+  "since": "Duomenys renkami nuo %1",
+  "supplied": "Kaip šaltinis: %1",
+  "dismiss": "Esc užveria skydelį"
+}

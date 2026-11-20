@@ -1,0 +1,17 @@
+{
+  "close": "Zavřít",
+  "total": "Nově sdílená data",
+  "repos": "Repozitáře",
+  "pairs": "Dvojice repozitářů",
+  "search": "Filtrovat podle cesty k repozitáři",
+  "noData": "Čekání na službu Project Bees",
+  "invalidData": "Soubor statistik obsahuje neplatná data",
+  "readError": "Soubor statistik nelze přečíst",
+  "noPairs": "Zatím nebyly zaznamenány shody mezi repozitáři",
+  "noRepos": "Zatím nebyly indexovány žádné repozitáře",
+  "noMatch": "Žádné odpovídající cesty",
+  "clock": "Aktualizováno: %1",
+  "since": "Sběr dat od %1",
+  "supplied": "Jako zdroj: %1",
+  "dismiss": "Esc zavře panel"
+}

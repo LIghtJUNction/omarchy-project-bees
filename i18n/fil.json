@@ -1,0 +1,17 @@
+{
+  "close": "Isara",
+  "total": "Bagong naibahaging datos",
+  "repos": "Mga repositoryo",
+  "pairs": "Mga pares ng repositoryo",
+  "search": "Salain ayon sa path ng repositoryo",
+  "noData": "Hinihintay ang serbisyo ng Project Bees",
+  "invalidData": "May hindi wastong datos ang file ng estadistika",
+  "readError": "Hindi mabasa ang file ng estadistika",
+  "noPairs": "Wala pang naitalang tugma sa magkaibang repositoryo",
+  "noRepos": "Wala pang na-index na repositoryo",
+  "noMatch": "Walang tumutugmang path",
+  "clock": "Na-update: %1",
+  "since": "Nangongolekta mula %1",
+  "supplied": "%1 bilang pinagmulan",
+  "dismiss": "Esc para isara"
+}

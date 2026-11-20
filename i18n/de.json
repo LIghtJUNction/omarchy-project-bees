@@ -1,0 +1,17 @@
+{
+  "close": "Schließen",
+  "total": "Neu gemeinsam genutzte Daten",
+  "repos": "Repositorys",
+  "pairs": "Repository-Paare",
+  "search": "Nach Repository-Pfad filtern",
+  "noData": "Warten auf den Project Bees-Dienst",
+  "invalidData": "Die Statistikdatei enthält ungültige Daten",
+  "readError": "Die Statistikdatei kann nicht gelesen werden",
+  "noPairs": "Noch keine Übereinstimmungen zwischen Repositorys erfasst",
+  "noRepos": "Noch keine Repositorys indiziert",
+  "noMatch": "Keine passenden Pfade",
+  "clock": "Aktualisiert: %1",
+  "since": "Erfassung seit %1",
+  "supplied": "Als Quelle: %1",
+  "dismiss": "Esc zum Schließen"
+}

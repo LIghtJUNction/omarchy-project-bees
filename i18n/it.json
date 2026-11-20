@@ -1,0 +1,17 @@
+{
+  "close": "Chiudi",
+  "total": "Dati appena condivisi",
+  "repos": "Repository",
+  "pairs": "Coppie di repository",
+  "search": "Filtra per percorso del repository",
+  "noData": "In attesa del servizio Project Bees",
+  "invalidData": "Il file delle statistiche contiene dati non validi",
+  "readError": "Impossibile leggere il file delle statistiche",
+  "noPairs": "Nessuna corrispondenza tra repository registrata finora",
+  "noRepos": "Nessun repository ancora indicizzato",
+  "noMatch": "Nessun percorso corrispondente",
+  "clock": "Aggiornato: %1",
+  "since": "Raccolta dal %1",
+  "supplied": "Come origine: %1",
+  "dismiss": "Esc per chiudere"
+}

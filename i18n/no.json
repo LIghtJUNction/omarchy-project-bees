@@ -1,0 +1,17 @@
+{
+  "close": "Lukk",
+  "total": "Nye delte data",
+  "repos": "Kodelagre",
+  "pairs": "Par av kodelagre",
+  "search": "Filtrer etter kodelagerets sti",
+  "noData": "Venter på Project Bees-tjenesten",
+  "invalidData": "Statistikkfilen inneholder ugyldige data",
+  "readError": "Kan ikke lese statistikkfilen",
+  "noPairs": "Ingen samsvar mellom kodelagre er registrert ennå",
+  "noRepos": "Ingen kodelagre er indeksert ennå",
+  "noMatch": "Ingen samsvarende stier",
+  "clock": "Oppdatert: %1",
+  "since": "Samler inn siden %1",
+  "supplied": "Som kilde: %1",
+  "dismiss": "Esc for å lukke"
+}

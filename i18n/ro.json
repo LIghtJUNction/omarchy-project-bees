@@ -1,0 +1,17 @@
+{
+  "close": "Închide",
+  "total": "Date nou partajate",
+  "repos": "Depozite",
+  "pairs": "Perechi de depozite",
+  "search": "Filtrează după calea depozitului",
+  "noData": "Se așteaptă serviciul Project Bees",
+  "invalidData": "Fișierul de statistici conține date nevalide",
+  "readError": "Fișierul de statistici nu poate fi citit",
+  "noPairs": "Nu s-au înregistrat încă potriviri între depozite",
+  "noRepos": "Niciun depozit nu a fost indexat încă",
+  "noMatch": "Nicio cale corespunzătoare",
+  "clock": "Actualizat la %1",
+  "since": "Colectare din %1",
+  "supplied": "%1 ca sursă",
+  "dismiss": "Esc pentru închidere"
+}

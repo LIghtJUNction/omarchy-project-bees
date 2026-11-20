@@ -1,0 +1,17 @@
+{
+  "close": "Stäng",
+  "total": "Nya delade data",
+  "repos": "Kodförråd",
+  "pairs": "Par av kodförråd",
+  "search": "Filtrera efter kodförrådets sökväg",
+  "noData": "Väntar på Project Bees-tjänsten",
+  "invalidData": "Statistikfilen innehåller ogiltiga data",
+  "readError": "Kan inte läsa statistikfilen",
+  "noPairs": "Inga matchningar mellan kodförråd har registrerats än",
+  "noRepos": "Inga kodförråd har indexerats än",
+  "noMatch": "Inga matchande sökvägar",
+  "clock": "Uppdaterad: %1",
+  "since": "Samlar in sedan %1",
+  "supplied": "Som källa: %1",
+  "dismiss": "Esc för att stänga"
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.lightjunction.project-bees",
   "name": "Project Bees",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "LIghtJUNction",
   "license": "MIT",
   "description": "Btrfs deduplication dashboard with cumulative bytes, per-repository totals, and cross-repository pairs.",

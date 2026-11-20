@@ -1,0 +1,17 @@
+{
+  "close": "Fermer",
+  "total": "Données nouvellement partagées",
+  "repos": "Dépôts",
+  "pairs": "Paires de dépôts",
+  "search": "Filtrer par chemin du dépôt",
+  "noData": "En attente du service Project Bees",
+  "invalidData": "Le fichier de statistiques contient des données invalides",
+  "readError": "Impossible de lire le fichier de statistiques",
+  "noPairs": "Aucune correspondance entre dépôts enregistrée pour le moment",
+  "noRepos": "Aucun dépôt indexé pour le moment",
+  "noMatch": "Aucun chemin correspondant",
+  "clock": "Mis à jour : %1",
+  "since": "Collecte depuis %1",
+  "supplied": "Fourni comme source : %1",
+  "dismiss": "Esc pour fermer"
+}

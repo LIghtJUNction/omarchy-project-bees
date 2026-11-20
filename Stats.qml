@@ -2,6 +2,7 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Io
+import qs.Commons as Commons
 
 Item {
   id: root
@@ -61,7 +62,7 @@ Item {
         && validNumber(row.bytes) && validNumber(row.toA) && row.toA <= row.bytes)
   }
 
-  function size(bytes, locale) {
+  function size(bytes) {
     const units = ["B", "KiB", "MiB", "GiB", "TiB", "PiB"]
     let value = Math.max(0, Number(bytes) || 0)
     let unit = 0
@@ -70,11 +71,11 @@ Item {
       unit++
     }
     const decimals = unit === 0 ? 0 : (value < 10 ? 2 : 1)
-    return { number: value.toLocaleString(locale, "f", decimals), unit: units[unit] }
+    return { number: Commons.I18n.formatNumber(value, decimals), unit: units[unit] }
   }
 
-  function format(bytes, locale) {
-    const value = size(bytes, locale)
+  function format(bytes) {
+    const value = size(bytes)
     return value.number + " " + value.unit
   }
 }

@@ -1,0 +1,17 @@
+{
+  "close": "Aizvērt",
+  "total": "Jauni koplietoti dati",
+  "repos": "Repozitoriji",
+  "pairs": "Repozitoriju pāri",
+  "search": "Filtrēt pēc repozitorija ceļa",
+  "noData": "Gaida Project Bees pakalpojumu",
+  "invalidData": "Statistikas failā ir nederīgi dati",
+  "readError": "Nevar nolasīt statistikas failu",
+  "noPairs": "Vēl nav reģistrētas sakritības starp repozitorijiem",
+  "noRepos": "Vēl nav indeksētu repozitoriju",
+  "noMatch": "Nav atbilstošu ceļu",
+  "clock": "Atjaunināts: %1",
+  "since": "Dati tiek vākti kopš %1",
+  "supplied": "Kā avots: %1",
+  "dismiss": "Esc, lai aizvērtu"
+}

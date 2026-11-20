@@ -9,21 +9,26 @@ FocusScope {
   property var snapshot: null
   property string error: ""
   property int tab: 0
+  readonly property bool rightToLeft: Commons.I18n.rightToLeft
   readonly property var locale: Qt.locale(Commons.I18n.formatLocale)
   readonly property color accent: Commons.Color.accent
-  readonly property color dim: Commons.Color.muted
   readonly property color ink: Commons.Color.menu.text
-  readonly property color line: Qt.rgba(ink.r, ink.g, ink.b, 0.16)
+  readonly property color dim: Qt.rgba(ink.r, ink.g, ink.b, 0.76)
+  readonly property color line: Qt.rgba(ink.r, ink.g, ink.b, 0.12)
   readonly property color hoverFill: Qt.rgba(ink.r, ink.g, ink.b, 0.05)
   readonly property int radius: Commons.Style.cornerRadius
   readonly property int controlRadius: Math.min(6, radius)
   readonly property string mono: Commons.Style.font.menuFamily
+  readonly property int bodySize: Math.max(14, Commons.Style.font.body)
+  readonly property int smallSize: Math.max(12, Commons.Style.font.bodySmall)
   readonly property var projects: snapshot ? snapshot.projects : []
   readonly property var pairs: snapshot ? snapshot.pairs : []
-  readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0, locale)
+  readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0)
   readonly property var rows: filteredRows()
-  readonly property real maxBytes: rows.length ? Math.max(1, rows[0].bytes) : 1
   signal closeRequested()
+
+  LayoutMirroring.enabled: rightToLeft
+  LayoutMirroring.childrenInherit: true
 
   Commons.Translations {
     id: strings
@@ -48,6 +53,8 @@ FocusScope {
     return name || path
   }
 
+  function ltr(text) { return "\u2066" + text + "\u2069" }
+
   Keys.onEscapePressed: root.closeRequested()
   onRowsChanged: if (list) list.positionViewAtBeginning()
 
@@ -66,61 +73,70 @@ FocusScope {
   component Label: Text {
     color: root.ink
     font.family: root.mono
-    font.pixelSize: 13
+    font.pixelSize: root.bodySize
     textFormat: Text.PlainText
   }
 
   component Tab: Controls.AbstractButton {
+    id: tabButton
     required property int index
     readonly property bool selected: root.tab === index
-    leftPadding: 13
-    rightPadding: 13
-    implicitHeight: 34
+    leftPadding: 12
+    rightPadding: 12
+    topPadding: 9
+    bottomPadding: 11
+    implicitWidth: contentItem.implicitWidth + leftPadding + rightPadding
+    implicitHeight: Math.max(38, contentItem.implicitHeight + topPadding + bottomPadding)
     hoverEnabled: true
     onClicked: root.tab = index
     background: Rectangle {
       radius: root.controlRadius
-      color: parent.selected ? Commons.Color.menu.selectedBackground : (parent.hovered ? root.hoverFill : "transparent")
-      border.color: parent.activeFocus ? root.accent : "transparent"
+      color: tabButton.hovered ? root.hoverFill : "transparent"
+      border.color: tabButton.activeFocus ? root.accent : "transparent"
+      Rectangle {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 12
+        anchors.rightMargin: 12
+        height: 2
+        visible: tabButton.selected
+        color: root.accent
+      }
     }
     contentItem: Label {
-      text: parent.text
-      color: parent.selected ? Commons.Color.menu.selectedText : root.dim
+      text: tabButton.text
+      color: tabButton.selected ? root.ink : root.dim
+      font.weight: tabButton.selected ? Font.DemiBold : Font.Normal
+      wrapMode: Text.WordWrap
       verticalAlignment: Text.AlignVCenter
     }
   }
 
   ColumnLayout {
     anchors.fill: parent
-    anchors.margins: 26
+    anchors.margins: root.width < 620 ? 22 : 32
     spacing: 18
 
     RowLayout {
-      spacing: 9
+      spacing: 10
       Layout.fillWidth: true
 
       Label {
         text: "⑂"
         color: root.accent
-        font.pixelSize: 19
+        font.pixelSize: Math.max(20, Commons.Style.font.heading)
       }
       Label {
-        text: "PROJECT BEES"
-        font.bold: true
-        font.letterSpacing: 1.7
+        text: "Project Bees"
+        font.weight: Font.DemiBold
+        font.pixelSize: Math.max(17, Commons.Style.font.heading)
       }
       Item { Layout.fillWidth: true }
-      Label {
-        visible: root.snapshot !== null && root.width > 570
-        text: root.snapshot ? strings.t("clock").arg(new Date(root.snapshot.updatedAt * 1000)
-          .toLocaleTimeString(root.locale, "HH:mm")) : ""
-        color: root.dim
-        font.pixelSize: 11
-      }
       Controls.AbstractButton {
         objectName: "closeButton"
-        implicitWidth: 30
-        implicitHeight: 28
+        implicitWidth: 32
+        implicitHeight: 32
         hoverEnabled: true
         Accessible.name: strings.t("close")
         onClicked: root.closeRequested()
@@ -134,84 +150,127 @@ FocusScope {
           horizontalAlignment: Text.AlignHCenter
           verticalAlignment: Text.AlignVCenter
           color: root.dim
-          font.pixelSize: 21
-        }
-      }
-    }
-
-    Item {
-      Layout.fillWidth: true
-      Layout.preferredHeight: 132
-
-      RowLayout {
-        anchors.fill: parent
-        spacing: 16
-
-        ColumnLayout {
-          Layout.fillWidth: true
-          spacing: 3
-          Label {
-            text: strings.t("total")
-            color: root.dim
-            font.letterSpacing: 0.6
-          }
-          RowLayout {
-            spacing: 8
-            Label {
-              objectName: "totalAmount"
-              text: root.snapshot ? root.total.number : "—"
-              color: root.accent
-              font.pixelSize: root.width < 620 ? 36 : 48
-              font.bold: true
-            }
-            Label {
-              visible: root.snapshot !== null
-              text: root.total.unit
-              color: root.accent
-              Layout.alignment: Qt.AlignBottom
-              Layout.bottomMargin: 7
-              font.pixelSize: 19
-            }
-          }
-          Label {
-            visible: root.snapshot !== null
-            text: root.snapshot ? strings.t("since").arg(new Date(root.snapshot.startedAt * 1000)
-              .toLocaleDateString(root.locale, "yyyy-MM-dd")) : ""
-            color: root.dim
-            font.pixelSize: 11
-          }
-        }
-
-        ColumnLayout {
-          visible: root.snapshot !== null && root.width > 490
-          spacing: 8
-          Repeater {
-            model: [
-              { name: strings.t("repos"), count: root.projects.length },
-              { name: strings.t("pairs"), count: root.pairs.length },
-            ]
-            delegate: RowLayout {
-              required property var modelData
-              spacing: 13
-              Label { text: modelData.name; color: root.dim; Layout.fillWidth: true }
-              Label { text: modelData.count.toLocaleString(root.locale, "f", 0); font.bold: true }
-            }
-          }
+          font.pixelSize: Math.max(22, Commons.Style.font.display)
         }
       }
     }
 
     RowLayout {
       Layout.fillWidth: true
-      spacing: 5
-      Tab { objectName: "projectsTab"; index: 0; text: strings.t("repos") }
-      Tab { objectName: "pairsTab"; index: 1; text: strings.t("pairs") }
-      Item { Layout.fillWidth: true }
+      Layout.topMargin: 8
+      Layout.bottomMargin: 8
+      spacing: 32
+
+      ColumnLayout {
+        Layout.fillWidth: true
+        Layout.minimumWidth: 180
+        spacing: 5
+        Label {
+          Layout.fillWidth: true
+          text: strings.t("total")
+          color: root.dim
+          wrapMode: Text.WordWrap
+        }
+        RowLayout {
+          LayoutMirroring.enabled: false
+          LayoutMirroring.childrenInherit: true
+          spacing: 8
+          Label {
+            objectName: "totalAmount"
+            text: root.snapshot ? root.total.number : "—"
+            color: root.accent
+            font.pixelSize: Math.max(root.width < 620 ? 40 : 52,
+              Math.round(Commons.Style.font.displayLarge * (root.width < 620 ? 1.4 : 1.9)))
+            font.weight: Font.DemiBold
+          }
+          Label {
+            visible: root.snapshot !== null
+            text: root.total.unit
+            color: root.accent
+            Layout.alignment: Qt.AlignBottom
+            Layout.bottomMargin: 8
+            font.pixelSize: Math.max(18, Commons.Style.font.heading)
+          }
+        }
+        Label {
+          Layout.fillWidth: true
+          visible: root.snapshot !== null
+          text: root.snapshot ? strings.t("since").arg(new Date(root.snapshot.startedAt * 1000)
+            .toLocaleDateString(root.locale, "yyyy-MM-dd")) : ""
+          color: root.dim
+          font.pixelSize: root.smallSize
+          wrapMode: Text.WordWrap
+        }
+      }
+
+      RowLayout {
+        visible: root.snapshot !== null && root.width > 620
+        Layout.preferredWidth: 260
+        Layout.maximumWidth: 260
+        Layout.alignment: Qt.AlignVCenter
+        spacing: 28
+        Repeater {
+          model: [
+            { name: strings.t("repos"), count: root.projects.length },
+            { name: strings.t("pairs"), count: root.pairs.length },
+          ]
+          delegate: ColumnLayout {
+            required property var modelData
+            Layout.fillWidth: true
+            Layout.preferredWidth: 116
+            Layout.alignment: Qt.AlignTop
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
+            spacing: 6
+            Label {
+              Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
+              text: Commons.I18n.formatNumber(modelData.count, 0)
+              font.pixelSize: Math.max(30, Commons.Style.font.displayLarge)
+              font.weight: Font.DemiBold
+            }
+            Label {
+              Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
+              text: modelData.name
+              color: root.dim
+              font.pixelSize: root.smallSize
+              wrapMode: Text.WordWrap
+            }
+          }
+        }
+      }
+    }
+
+    ColumnLayout {
+      id: filters
+      Layout.fillWidth: true
+      spacing: 8
+      RowLayout {
+        Layout.fillWidth: true
+        spacing: 8
+        Tab {
+          objectName: "projectsTab"
+          Layout.maximumWidth: (filters.width - 8) / 2
+          index: 0
+          text: strings.t("repos")
+        }
+        Tab {
+          objectName: "pairsTab"
+          Layout.maximumWidth: (filters.width - 8) / 2
+          index: 1
+          text: strings.t("pairs")
+        }
+        Item { Layout.fillWidth: true }
+      }
       Controls.TextField {
         id: search
         objectName: "search"
-        Layout.preferredWidth: Math.min(262, root.width * 0.42)
-        Layout.preferredHeight: 34
+        Layout.fillWidth: true
+        Layout.preferredHeight: Math.max(42, root.bodySize + 26)
+        LayoutMirroring.enabled: false
+        LayoutMirroring.childrenInherit: true
+        horizontalAlignment: text.length > 0 || !root.rightToLeft ? Text.AlignLeft : Text.AlignRight
         selectByMouse: true
         placeholderText: strings.t("search")
         placeholderTextColor: root.dim
@@ -219,12 +278,19 @@ FocusScope {
         selectionColor: Qt.rgba(root.accent.r, root.accent.g, root.accent.b, 0.25)
         selectedTextColor: root.ink
         font.family: root.mono
-        font.pixelSize: 12
-        leftPadding: 10
+        font.pixelSize: root.bodySize
+        leftPadding: 12
+        rightPadding: 12
         background: Rectangle {
-          color: "transparent"
-          border.color: parent.activeFocus ? root.accent : root.line
+          color: root.hoverFill
           radius: root.controlRadius
+          Rectangle {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            height: search.activeFocus ? 2 : 1
+            color: search.activeFocus ? root.accent : root.line
+          }
         }
       }
     }
@@ -235,7 +301,7 @@ FocusScope {
       Layout.fillWidth: true
       Layout.fillHeight: true
       clip: true
-      spacing: 4
+      spacing: 2
       model: root.rows
       boundsBehavior: Flickable.StopAtBounds
       Controls.ScrollBar.vertical: Controls.ScrollBar { policy: Controls.ScrollBar.AsNeeded }
@@ -243,70 +309,72 @@ FocusScope {
       delegate: Rectangle {
         id: entry
         required property var modelData
-        required property int index
         readonly property bool isPair: row.a !== undefined
         readonly property var row: modelData
         width: list.width - 8
-        height: 53
+        height: Math.max(64, root.bodySize + root.smallSize + 30)
         radius: root.controlRadius
         color: hover.hovered ? root.hoverFill : "transparent"
 
         HoverHandler { id: hover }
         RowLayout {
           anchors.fill: parent
-          anchors.margins: 9
-          spacing: 14
+          anchors.leftMargin: 4
+          anchors.rightMargin: 4
+          anchors.topMargin: 10
+          anchors.bottomMargin: 10
+          spacing: 24
 
           ColumnLayout {
             Layout.fillWidth: true
-            Layout.minimumWidth: 60
-            spacing: 3
+            Layout.minimumWidth: 100
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
+            spacing: 6
             Label {
               Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
               elide: Text.ElideMiddle
-              font.bold: true
-              text: entry.isPair ? root.leaf(entry.row.a) + "  ↔  " + root.leaf(entry.row.b) : root.leaf(entry.row.path)
+              font.weight: Font.DemiBold
+              font.pixelSize: Math.max(15, Commons.Style.font.subtitle)
+              text: entry.isPair ? root.ltr(root.ltr(root.leaf(entry.row.a)) + "  ↔  " + root.ltr(root.leaf(entry.row.b)))
+                : root.ltr(root.leaf(entry.row.path))
             }
             Label {
               Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
               elide: Text.ElideMiddle
               color: root.dim
-              font.pixelSize: 11
-              text: entry.isPair ? root.caption(entry.row.a) + "  ↔  " + root.caption(entry.row.b) : root.caption(entry.row.path)
-            }
-          }
-
-          Rectangle {
-            visible: root.width > 620
-            Layout.preferredWidth: 120
-            Layout.preferredHeight: 4
-            radius: Math.min(2, root.radius)
-            color: root.line
-            Rectangle {
-              height: parent.height
-              width: parent.width * (entry.row.bytes / root.maxBytes)
-              radius: parent.radius
-              color: root.accent
+              font.pixelSize: root.smallSize
+              text: entry.isPair ? root.ltr(root.ltr(root.caption(entry.row.a)) + "  ↔  " + root.ltr(root.caption(entry.row.b)))
+                : root.ltr(root.caption(entry.row.path))
             }
           }
 
           ColumnLayout {
-            spacing: 3
+            Layout.maximumWidth: list.width * 0.42
+            LayoutMirroring.enabled: false
+            LayoutMirroring.childrenInherit: true
+            spacing: 6
             Label {
-              Layout.alignment: Qt.AlignRight
-              color: entry.row.bytes > 0 ? root.accent : root.dim
-              font.bold: entry.row.bytes > 0
-              text: Stats.format(entry.row.bytes, root.locale)
+              Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
+              color: entry.row.bytes > 0 ? root.ink : root.dim
+              font.pixelSize: Math.max(17, Commons.Style.font.heading)
+              font.weight: entry.row.bytes > 0 ? Font.DemiBold : Font.Normal
+              text: root.ltr(Stats.format(entry.row.bytes))
             }
             Label {
-              Layout.alignment: Qt.AlignRight
-              visible: root.width > 620 && (entry.isPair || entry.row.sourceBytes > 0)
+              Layout.fillWidth: true
+              horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
+              visible: entry.isPair || entry.row.sourceBytes > 0
               color: root.dim
-              font.pixelSize: 10
+              font.pixelSize: root.smallSize
+              elide: Text.ElideRight
               text: entry.isPair ?
-                "← " + Stats.format(entry.row.toA, root.locale) + "  |  " +
-                  Stats.format(entry.row.bytes - entry.row.toA, root.locale) + " →" :
-                strings.t("supplied").arg(Stats.format(entry.row.sourceBytes, root.locale))
+                root.ltr("← " + Stats.format(entry.row.toA) + "  ·  " +
+                  Stats.format(entry.row.bytes - entry.row.toA) + " →") :
+                strings.t("supplied").arg(root.ltr(Stats.format(entry.row.sourceBytes)))
             }
           }
         }
@@ -326,11 +394,23 @@ FocusScope {
       }
     }
 
-    Label {
+    RowLayout {
+      Layout.fillWidth: true
       visible: root.height > 485
-      color: root.dim
-      font.pixelSize: 11
-      text: strings.t("dismiss")
+      spacing: 16
+      Label {
+        Layout.fillWidth: true
+        text: root.snapshot ? strings.t("clock").arg(new Date(root.snapshot.updatedAt * 1000)
+          .toLocaleTimeString(root.locale, "HH:mm")) : ""
+        color: root.dim
+        font.pixelSize: root.smallSize
+        elide: Text.ElideRight
+      }
+      Label {
+        color: root.dim
+        font.pixelSize: root.smallSize
+        text: strings.t("dismiss")
+      }
     }
   }
 }

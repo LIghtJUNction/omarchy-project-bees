@@ -1,0 +1,17 @@
+{
+  "close": "닫기",
+  "total": "새로 공유된 데이터",
+  "repos": "저장소",
+  "pairs": "저장소 쌍",
+  "search": "저장소 경로로 필터링",
+  "noData": "Project Bees 서비스 대기 중",
+  "invalidData": "통계 파일의 데이터가 올바르지 않습니다",
+  "readError": "통계 파일을 읽을 수 없습니다",
+  "noPairs": "저장소 간 일치 항목이 아직 기록되지 않았습니다",
+  "noRepos": "아직 인덱싱된 저장소가 없습니다",
+  "noMatch": "일치하는 경로가 없습니다",
+  "clock": "업데이트: %1",
+  "since": "%1부터 집계",
+  "supplied": "원본으로 제공: %1",
+  "dismiss": "Esc로 닫기"
+}

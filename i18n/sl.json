@@ -1,0 +1,17 @@
+{
+  "close": "Zapri",
+  "total": "Na novo deljeni podatki",
+  "repos": "Repozitoriji",
+  "pairs": "Pari repozitorijev",
+  "search": "Filtriraj po poti repozitorija",
+  "noData": "Čakanje na storitev Project Bees",
+  "invalidData": "Datoteka s statistiko vsebuje neveljavne podatke",
+  "readError": "Datoteke s statistiko ni mogoče prebrati",
+  "noPairs": "Med repozitoriji še ni zabeleženih ujemanj",
+  "noRepos": "Noben repozitorij še ni indeksiran",
+  "noMatch": "Ni ujemajočih se poti",
+  "clock": "Posodobljeno: %1",
+  "since": "Zbiranje podatkov od %1",
+  "supplied": "%1 kot vir",
+  "dismiss": "Esc za zapiranje"
+}

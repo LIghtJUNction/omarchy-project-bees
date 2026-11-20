@@ -1,0 +1,17 @@
+{
+  "close": "Tanca",
+  "total": "Dades compartides noves",
+  "repos": "Repositoris",
+  "pairs": "Parelles de repositoris",
+  "search": "Filtra pel camí del repositori",
+  "noData": "S’està esperant el servei Project Bees",
+  "invalidData": "El fitxer d’estadístiques conté dades no vàlides",
+  "readError": "No es pot llegir el fitxer d’estadístiques",
+  "noPairs": "Encara no s’han registrat coincidències entre repositoris",
+  "noRepos": "Encara no s’ha indexat cap repositori",
+  "noMatch": "Cap camí coincident",
+  "clock": "Actualitzat: %1",
+  "since": "Recollida de dades des de %1",
+  "supplied": "Com a origen: %1",
+  "dismiss": "Esc per tancar"
+}

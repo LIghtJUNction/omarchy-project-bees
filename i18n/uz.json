@@ -1,0 +1,17 @@
+{
+  "close": "Yopish",
+  "total": "Yangi ulashilgan maʼlumotlar",
+  "repos": "Repozitoriylar",
+  "pairs": "Repozitoriy juftlari",
+  "search": "Repozitoriy yoʻli boʻyicha filtrlash",
+  "noData": "Project Bees xizmati kutilmoqda",
+  "invalidData": "Statistika faylida yaroqsiz maʼlumotlar bor",
+  "readError": "Statistika faylini oʻqib boʻlmadi",
+  "noPairs": "Repozitoriylar orasida hali mosliklar qayd etilmagan",
+  "noRepos": "Hali hech bir repozitoriy indekslanmagan",
+  "noMatch": "Mos yoʻllar topilmadi",
+  "clock": "Yangilandi: %1",
+  "since": "%1 dan beri yigʻilmoqda",
+  "supplied": "Manba sifatida %1",
+  "dismiss": "Yopish uchun Esc"
+}

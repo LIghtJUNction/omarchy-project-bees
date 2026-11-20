@@ -1,12 +1,12 @@
 # Project Bees for Omarchy
 
-![Project Bees dashboard with synthetic repository data](https://github.com/LIghtJUNction/omarchy-project-bees/releases/download/v0.1.0/dashboard.jpg)
+![Project Bees dashboard with synthetic repository data](https://github.com/LIghtJUNction/omarchy-project-bees/releases/download/v0.1.1/dashboard.jpg)
 
 A native dashboard for [project-bees](https://github.com/LIghtJUNction/project-bees).
 The bar shows cumulative newly shared data. Click it to view size-ranked
 repository and pair lists, filter paths, and see each pair's direction totals.
-The panel follows Omarchy's theme, corner radius, and selected language;
-English, Simplified Chinese, and Traditional Chinese are included.
+The panel follows Omarchy's theme, text size, corner radius, and selected
+language. Its interface is translated into all 50 Omarchy languages.
 
 ## Install
 
@@ -27,6 +27,17 @@ The dashboard opens from its bar widget or from
 | Search field | Filter repository paths in the current list |
 | Repositories / Repository pairs | Switch between destination totals and pair totals |
 | Esc, close button, or outside click | Close the dashboard |
+
+## Languages
+
+Choose a language in Omarchy's **Setup > Language** menu. The dashboard and
+bar widget update immediately, including number and date formatting. Arabic,
+Hebrew, Persian, and Urdu mirror the interface; repository paths and pair
+directions keep their left-to-right order.
+
+Translation catalogs live in `i18n/`. Each catalog contains the same 15 keys
+as `en.json`, with `%1` placeholders preserved. Omarchy falls back to English
+for an unknown language or a missing translation.
 
 ## Data access
 

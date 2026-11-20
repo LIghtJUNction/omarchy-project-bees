@@ -1,0 +1,17 @@
+{
+  "close": "Zamknij",
+  "total": "Nowo współdzielone dane",
+  "repos": "Repozytoria",
+  "pairs": "Pary repozytoriów",
+  "search": "Filtruj według ścieżki repozytorium",
+  "noData": "Oczekiwanie na usługę Project Bees",
+  "invalidData": "Plik statystyk zawiera nieprawidłowe dane",
+  "readError": "Nie można odczytać pliku statystyk",
+  "noPairs": "Nie zapisano jeszcze dopasowań między repozytoriami",
+  "noRepos": "Nie zindeksowano jeszcze żadnych repozytoriów",
+  "noMatch": "Brak pasujących ścieżek",
+  "clock": "Zaktualizowano: %1",
+  "since": "Zbieranie danych od %1",
+  "supplied": "Jako źródło: %1",
+  "dismiss": "Esc, aby zamknąć"
+}

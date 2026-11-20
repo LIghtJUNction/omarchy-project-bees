@@ -1,0 +1,17 @@
+{
+  "close": "Tutup",
+  "total": "Data yang baru dikongsi",
+  "repos": "Repositori",
+  "pairs": "Pasangan repositori",
+  "search": "Tapis mengikut laluan repositori",
+  "noData": "Menunggu perkhidmatan Project Bees",
+  "invalidData": "Fail statistik mengandungi data tidak sah",
+  "readError": "Tidak dapat membaca fail statistik",
+  "noPairs": "Belum ada padanan antara repositori direkodkan",
+  "noRepos": "Belum ada repositori diindeks",
+  "noMatch": "Tiada laluan yang sepadan",
+  "clock": "Dikemas kini %1",
+  "since": "Dikumpulkan sejak %1",
+  "supplied": "%1 sebagai sumber",
+  "dismiss": "Esc untuk menutup"
+}

@@ -1,0 +1,17 @@
+{
+  "close": "Luk",
+  "total": "Nye delte data",
+  "repos": "Kodearkiver",
+  "pairs": "Par af kodearkiver",
+  "search": "Filtrér efter kodearkivets sti",
+  "noData": "Venter på Project Bees-tjenesten",
+  "invalidData": "Statistikfilen indeholder ugyldige data",
+  "readError": "Kan ikke læse statistikfilen",
+  "noPairs": "Ingen match mellem kodearkiver er registreret endnu",
+  "noRepos": "Ingen kodearkiver er indekseret endnu",
+  "noMatch": "Ingen matchende stier",
+  "clock": "Opdateret: %1",
+  "since": "Indsamling siden %1",
+  "supplied": "Som kilde: %1",
+  "dismiss": "Esc for at lukke"
+}

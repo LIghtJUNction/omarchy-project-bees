@@ -1,0 +1,17 @@
+{
+  "close": "Fechar",
+  "total": "Dados recém-compartilhados",
+  "repos": "Repositórios",
+  "pairs": "Pares de repositórios",
+  "search": "Filtrar pelo caminho do repositório",
+  "noData": "Aguardando o serviço Project Bees",
+  "invalidData": "O arquivo de estatísticas contém dados inválidos",
+  "readError": "Não foi possível ler o arquivo de estatísticas",
+  "noPairs": "Ainda não há correspondências registradas entre repositórios",
+  "noRepos": "Ainda não há repositórios indexados",
+  "noMatch": "Nenhum caminho correspondente",
+  "clock": "Atualizado: %1",
+  "since": "Coletando desde %1",
+  "supplied": "Como origem: %1",
+  "dismiss": "Esc para fechar"
+}

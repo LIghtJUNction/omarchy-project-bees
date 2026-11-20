@@ -1,0 +1,17 @@
+{
+  "close": "Loka",
+  "total": "Ný sameiginleg gögn",
+  "repos": "Kóðasöfn",
+  "pairs": "Pör kóðasafna",
+  "search": "Sía eftir slóð kóðasafns",
+  "noData": "Bíð eftir Project Bees þjónustunni",
+  "invalidData": "Tölfræðiskráin inniheldur ógild gögn",
+  "readError": "Ekki er hægt að lesa tölfræðiskrána",
+  "noPairs": "Engar samsvaranir milli kóðasafna hafa verið skráðar enn",
+  "noRepos": "Engin kóðasöfn hafa verið skráð í atriðaskrá enn",
+  "noMatch": "Engar samsvarandi slóðir",
+  "clock": "Uppfært: %1",
+  "since": "Söfnun frá %1",
+  "supplied": "Sem uppruni: %1",
+  "dismiss": "Esc til að loka"
+}

@@ -1,0 +1,17 @@
+{
+  "close": "Sulge",
+  "total": "Äsja jagatud andmed",
+  "repos": "Hoidlad",
+  "pairs": "Hoidlapaarid",
+  "search": "Filtreeri hoidla asukoha järgi",
+  "noData": "Ootan Project Bees teenust",
+  "invalidData": "Statistikafail sisaldab vigaseid andmeid",
+  "readError": "Statistikafaili ei saa lugeda",
+  "noPairs": "Hoidlatevahelisi vasteid pole veel salvestatud",
+  "noRepos": "Ühtegi hoidlat pole veel indekseeritud",
+  "noMatch": "Sobivaid asukohti ei leitud",
+  "clock": "Uuendatud: %1",
+  "since": "Kogumine alates %1",
+  "supplied": "Allikana: %1",
+  "dismiss": "Sulgemiseks vajuta Esc"
+}

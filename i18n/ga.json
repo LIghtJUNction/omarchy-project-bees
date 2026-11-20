@@ -1,0 +1,17 @@
+{
+  "close": "Dún",
+  "total": "Sonraí nua comhroinnte",
+  "repos": "Taisclanna",
+  "pairs": "Péirí taisclann",
+  "search": "Scag de réir chonair na taisclainne",
+  "noData": "Ag fanacht ar sheirbhís Project Bees",
+  "invalidData": "Tá sonraí neamhbhailí sa chomhad staitisticí",
+  "readError": "Ní féidir an comhad staitisticí a léamh",
+  "noPairs": "Níl aon mheaitseálacha idir taisclanna taifeadta fós",
+  "noRepos": "Níl aon taisclanna innéacsaithe fós",
+  "noMatch": "Níl aon chonairí comhoiriúnacha ann",
+  "clock": "Nuashonraithe: %1",
+  "since": "Bailiú ó %1",
+  "supplied": "Mar fhoinse: %1",
+  "dismiss": "Esc le dúnadh"
+}

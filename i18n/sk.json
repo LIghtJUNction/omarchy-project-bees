@@ -1,0 +1,17 @@
+{
+  "close": "Zavrieť",
+  "total": "Novo zdieľané údaje",
+  "repos": "Repozitáre",
+  "pairs": "Dvojice repozitárov",
+  "search": "Filtrovať podľa cesty repozitára",
+  "noData": "Čaká sa na službu Project Bees",
+  "invalidData": "Súbor štatistík obsahuje neplatné údaje",
+  "readError": "Súbor štatistík sa nedá prečítať",
+  "noPairs": "Zatiaľ neboli zaznamenané zhody medzi repozitármi",
+  "noRepos": "Zatiaľ neboli indexované žiadne repozitáre",
+  "noMatch": "Žiadne zodpovedajúce cesty",
+  "clock": "Aktualizované: %1",
+  "since": "Zber údajov od %1",
+  "supplied": "%1 ako zdroj",
+  "dismiss": "Esc na zatvorenie"
+}

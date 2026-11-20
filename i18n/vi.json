@@ -1,0 +1,17 @@
+{
+  "close": "Đóng",
+  "total": "Dữ liệu mới được chia sẻ",
+  "repos": "Kho mã",
+  "pairs": "Cặp kho mã",
+  "search": "Lọc theo đường dẫn kho mã",
+  "noData": "Đang chờ dịch vụ Project Bees",
+  "invalidData": "Tệp thống kê chứa dữ liệu không hợp lệ",
+  "readError": "Không thể đọc tệp thống kê",
+  "noPairs": "Chưa ghi nhận dữ liệu trùng khớp giữa các kho mã",
+  "noRepos": "Chưa có kho mã nào được lập chỉ mục",
+  "noMatch": "Không có đường dẫn phù hợp",
+  "clock": "Cập nhật lúc %1",
+  "since": "Thu thập từ %1",
+  "supplied": "%1 với vai trò nguồn",
+  "dismiss": "Esc để đóng"
+}

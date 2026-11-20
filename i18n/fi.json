@@ -1,0 +1,17 @@
+{
+  "close": "Sulje",
+  "total": "Uudet jaetut tiedot",
+  "repos": "Koodivarastot",
+  "pairs": "Koodivarastoparit",
+  "search": "Suodata koodivaraston polun mukaan",
+  "noData": "Odotetaan Project Bees -palvelua",
+  "invalidData": "Tilastotiedosto sisältää virheellisiä tietoja",
+  "readError": "Tilastotiedostoa ei voi lukea",
+  "noPairs": "Koodivarastojen välisiä vastaavuuksia ei ole vielä kirjattu",
+  "noRepos": "Koodivarastoja ei ole vielä indeksoitu",
+  "noMatch": "Ei vastaavia polkuja",
+  "clock": "Päivitetty: %1",
+  "since": "Tietoja kerätty alkaen %1",
+  "supplied": "Lähteenä: %1",
+  "dismiss": "Sulje painamalla Esc"
+}
