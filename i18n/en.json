@@ -1,0 +1,17 @@
+{
+  "close": "Close",
+  "total": "Newly shared data",
+  "repos": "Repositories",
+  "pairs": "Repository pairs",
+  "search": "Filter by repository path",
+  "noData": "Waiting for the Project Bees service",
+  "invalidData": "The statistics file contains invalid data",
+  "readError": "Unable to read the statistics file",
+  "noPairs": "No cross-repository matches recorded yet",
+  "noRepos": "No repositories indexed yet",
+  "noMatch": "No matching paths",
+  "clock": "Updated %1",
+  "since": "Collecting since %1",
+  "supplied": "%1 as source",
+  "dismiss": "Esc to close"
+}

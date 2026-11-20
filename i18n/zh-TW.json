@@ -1,0 +1,17 @@
+{
+  "close": "關閉",
+  "total": "累計新增共享",
+  "repos": "儲存庫",
+  "pairs": "儲存庫配對",
+  "search": "依儲存庫路徑篩選",
+  "noData": "正在等待 Project Bees 服務",
+  "invalidData": "統計檔案內容無效",
+  "readError": "無法讀取統計檔案",
+  "noPairs": "尚無跨儲存庫去重紀錄",
+  "noRepos": "尚無已索引的儲存庫",
+  "noMatch": "沒有符合條件的路徑",
+  "clock": "更新於 %1",
+  "since": "自 %1 起統計",
+  "supplied": "作為來源 %1",
+  "dismiss": "Esc 關閉"
+}

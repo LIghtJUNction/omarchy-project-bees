@@ -1,0 +1,17 @@
+{
+  "close": "关闭",
+  "total": "累计新增共享",
+  "repos": "仓库",
+  "pairs": "仓库对",
+  "search": "按仓库路径筛选",
+  "noData": "正在等待 Project Bees 服务",
+  "invalidData": "统计文件内容无效",
+  "readError": "无法读取统计文件",
+  "noPairs": "还没有跨仓库去重记录",
+  "noRepos": "还没有索引到仓库",
+  "noMatch": "没有符合条件的路径",
+  "clock": "更新于 %1",
+  "since": "自 %1 起统计",
+  "supplied": "作为来源 %1",
+  "dismiss": "Esc 关闭"
+}
