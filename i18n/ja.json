@@ -30,7 +30,11 @@
   "indexedChunks": "Content blocks",
   "processedFiles": "Files checked",
   "events": "Deduplication log",
-  "eventSearch": "Filter source or destination paths",
-  "noEvents": "Newly shared ranges will appear here",
-  "eventsUnavailable": "Recent records are unavailable in this service version"
+  "eventSearch": "Filter scan, source, or destination paths",
+  "noEvents": "Scanning and sharing updates will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version",
+  "logProgress": "Progress",
+  "logShared": "Newly shared",
+  "logCounters": "Visited %1 · Read %2 · Blocks %3 · Checked %4",
+  "logNoRoot": "Directory not reported"
 }

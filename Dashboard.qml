@@ -23,7 +23,7 @@ FocusScope {
   readonly property int smallSize: Math.max(12, Commons.Style.font.bodySmall)
   readonly property var projects: snapshot ? snapshot.projects : []
   readonly property var pairs: snapshot ? snapshot.pairs : []
-  readonly property var events: Stats.events(snapshot)
+  readonly property var events: Stats.logEntries(snapshot, Stats.progressHistory)
   readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0)
   readonly property var rows: filteredRows()
   readonly property var activity: Stats.activity(snapshot)
@@ -78,7 +78,25 @@ FocusScope {
     const query = search ? search.text.trim().toLowerCase() : ""
     if (!query) return source
     return source.filter(row => (tab === 0 ? row.path : tab === 1 ? row.a + " " + row.b
-      : row.source + " " + row.destination).toLowerCase().includes(query))
+      : row.kind === "progress" ? row.scanRoot : row.source + " " + row.destination)
+      .toLowerCase().includes(query))
+  }
+
+  function progressText(row) {
+    let text = strings.t(row.phase === "scanning" ? "activityIndexing"
+      : row.phase === "deduplicating" ? "activityWorking"
+      : row.phase === "stopped" ? "activityStopped" : "activityIdle")
+    if (row.phase === "idle") text = text.arg(new Date(row.nextScanAt * 1000)
+      .toLocaleTimeString(locale, "HH:mm"))
+    if (row.scanKind) text += " · " + strings.t(row.scanKind === "priority" ? "activityPriority" : "activityFull")
+    return text
+  }
+
+  function progressCounters(row) {
+    return strings.t("logCounters").arg(Commons.I18n.formatNumber(row.scannedFiles, 0))
+      .arg(Commons.I18n.formatNumber(row.hashedFiles, 0))
+      .arg(Commons.I18n.formatNumber(row.indexedChunks, 0))
+      .arg(Commons.I18n.formatNumber(row.processedFiles, 0))
   }
 
   function caption(path) {
@@ -159,10 +177,16 @@ FocusScope {
       spacing: 10
       Layout.fillWidth: true
 
-      Label {
-        text: "⑂"
-        color: root.accent
-        font.pixelSize: Math.max(20, Commons.Style.font.heading)
+      Image {
+        objectName: "projectBeesLogo"
+        Layout.preferredWidth: 40
+        Layout.preferredHeight: 26
+        Layout.alignment: Qt.AlignVCenter
+        source: Qt.resolvedUrl("assets/logo.svg")
+        sourceSize.width: 80
+        sourceSize.height: 52
+        fillMode: Image.PreserveAspectFit
+        Accessible.ignored: true
       }
       Label {
         text: "Project Bees"
@@ -430,11 +454,12 @@ FocusScope {
       delegate: Rectangle {
         id: entry
         required property var modelData
+        readonly property bool isProgress: row.kind === "progress"
         readonly property bool isEvent: row.destination !== undefined
         readonly property bool isPair: row.a !== undefined
         readonly property var row: modelData
         width: list.width - 8
-        height: Math.max(64, root.bodySize + root.smallSize + 30)
+        height: Math.max(64, details.implicitHeight + 20, summary.implicitHeight + 20)
         radius: root.controlRadius
         color: hover.hovered ? root.hoverFill : "transparent"
 
@@ -448,6 +473,7 @@ FocusScope {
           spacing: 24
 
           ColumnLayout {
+            id: details
             Layout.fillWidth: true
             Layout.minimumWidth: 100
             LayoutMirroring.enabled: false
@@ -460,7 +486,8 @@ FocusScope {
               color: entry.isEvent ? root.dim : root.ink
               font.weight: entry.isEvent ? Font.Normal : Font.DemiBold
               font.pixelSize: entry.isEvent ? root.smallSize : Math.max(15, Commons.Style.font.subtitle)
-              text: entry.isEvent ? root.ltr(root.caption(entry.row.source))
+              text: entry.isProgress ? root.progressText(entry.row)
+                : entry.isEvent ? strings.t("logShared") + " · " + root.ltr(root.caption(entry.row.source))
                 : entry.isPair ? root.ltr(root.ltr(root.leaf(entry.row.a)) + "  ↔  " + root.ltr(root.leaf(entry.row.b)))
                 : root.ltr(root.leaf(entry.row.path))
             }
@@ -470,13 +497,24 @@ FocusScope {
               elide: Text.ElideMiddle
               color: entry.isEvent ? root.ink : root.dim
               font.pixelSize: entry.isEvent ? root.bodySize : root.smallSize
-              text: entry.isEvent ? root.ltr("→ " + root.caption(entry.row.destination))
+              text: entry.isProgress ? (entry.row.scanRoot ? root.ltr(root.caption(entry.row.scanRoot)) : strings.t("logNoRoot"))
+                : entry.isEvent ? root.ltr("→ " + root.caption(entry.row.destination))
                 : entry.isPair ? root.ltr(root.ltr(root.caption(entry.row.a)) + "  ↔  " + root.ltr(root.caption(entry.row.b)))
                 : root.ltr(root.caption(entry.row.path))
+            }
+            Label {
+              Layout.fillWidth: true
+              visible: entry.isProgress
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
+              color: root.dim
+              font.pixelSize: root.smallSize
+              wrapMode: Text.WordWrap
+              text: entry.isProgress ? root.progressCounters(entry.row) : ""
             }
           }
 
           ColumnLayout {
+            id: summary
             Layout.maximumWidth: list.width * 0.42
             LayoutMirroring.enabled: false
             LayoutMirroring.childrenInherit: true
@@ -485,18 +523,19 @@ FocusScope {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
               color: entry.isEvent ? root.accent : entry.row.bytes > 0 ? root.ink : root.dim
-              font.pixelSize: Math.max(17, Commons.Style.font.heading)
+              font.pixelSize: entry.isProgress ? root.smallSize : Math.max(17, Commons.Style.font.heading)
               font.weight: entry.row.bytes > 0 ? Font.DemiBold : Font.Normal
-              text: root.ltr((entry.isEvent ? "+ " : "") + Stats.format(entry.row.bytes))
+              text: entry.isProgress ? strings.t("logProgress")
+                : root.ltr((entry.isEvent ? "+ " : "") + Stats.format(entry.row.bytes))
             }
             Label {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
-              visible: entry.isEvent || entry.isPair || entry.row.sourceBytes > 0
+              visible: entry.isProgress || entry.isEvent || entry.isPair || entry.row.sourceBytes > 0
               color: root.dim
               font.pixelSize: root.smallSize
               elide: Text.ElideRight
-              text: entry.isEvent ? new Date(entry.row.at * 1000).toLocaleTimeString(root.locale, "HH:mm:ss")
+              text: entry.isProgress || entry.isEvent ? new Date(entry.row.at * 1000).toLocaleTimeString(root.locale, "HH:mm:ss")
                 : entry.isPair ?
                 root.ltr("← " + Stats.format(entry.row.toA) + "  ·  " +
                   Stats.format(entry.row.bytes - entry.row.toA) + " →") :

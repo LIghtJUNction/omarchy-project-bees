@@ -30,7 +30,11 @@
   "indexedChunks": "內容資料區塊",
   "processedFiles": "已檢查檔案",
   "events": "去重紀錄",
-  "eventSearch": "篩選來源或目標路徑",
-  "noEvents": "新增共享範圍會顯示在這裡",
-  "eventsUnavailable": "此服務版本尚未提供最近去重紀錄"
+  "eventSearch": "篩選掃描、來源或目標路徑",
+  "noEvents": "掃描進度與新增共享紀錄會顯示在這裡",
+  "eventsUnavailable": "此服務版本尚未提供最近去重紀錄",
+  "logProgress": "執行進度",
+  "logShared": "新增共享",
+  "logCounters": "掃描 %1 · 讀取 %2 · 資料區塊 %3 · 檢查 %4",
+  "logNoRoot": "未回報掃描目錄"
 }

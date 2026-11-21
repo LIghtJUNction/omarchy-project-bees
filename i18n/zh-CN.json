@@ -30,7 +30,11 @@
   "indexedChunks": "内容数据块",
   "processedFiles": "已检查文件",
   "events": "去重日志",
-  "eventSearch": "筛选来源或目标路径",
-  "noEvents": "新增共享范围会显示在这里",
-  "eventsUnavailable": "此服务版本尚未提供最近去重记录"
+  "eventSearch": "筛选扫描、来源或目标路径",
+  "noEvents": "扫描进度与新增共享记录会显示在这里",
+  "eventsUnavailable": "此服务版本尚未提供最近去重记录",
+  "logProgress": "运行进度",
+  "logShared": "新增共享",
+  "logCounters": "扫描 %1 · 读取 %2 · 数据块 %3 · 检查 %4",
+  "logNoRoot": "未报告扫描目录"
 }
