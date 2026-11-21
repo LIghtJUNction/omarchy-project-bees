@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "io.github.lightjunction.project-bees",
   "name": "Project Bees",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "LIghtJUNction",
   "license": "MIT",
-  "description": "Btrfs deduplication dashboard with live scan progress, recent sharing records, and cumulative totals.",
+  "description": "Follow project-bees scan progress, live activity logs, and newly shared Btrfs data from your Omarchy bar.",
   "kinds": ["bar-widget", "panel"],
   "entryPoints": {"barWidget": "BarWidget.qml", "panel": "Panel.qml"},
   "barWidget": {
     "displayName": "Project Bees",
-    "description": "Open the Btrfs deduplication dashboard.",
+    "description": "View scan progress, activity logs, and cumulative sharing.",
     "category": "System",
     "defaultSection": "right",
     "allowMultiple": false

@@ -1,27 +1,48 @@
 # Project Bees for Omarchy
 
-![Project Bees dashboard with synthetic repository data](https://github.com/LIghtJUNction/omarchy-project-bees/releases/download/v0.1.2/dashboard.jpg)
+<img src="assets/logo.svg" alt="Project Bees honeycomb logo" width="104">
 
-A native dashboard for [project-bees](https://github.com/LIghtJUNction/project-bees).
-The bar shows cumulative newly shared data. Click it to follow the current
-scan and recent deduplication records, or browse size-ranked repository and
-pair lists. Every list can be filtered by path.
-The panel follows Omarchy's theme, text size, corner radius, and selected
-language. Existing controls support all 50 Omarchy languages. The new progress
-and log labels are available in English, Simplified Chinese, and Traditional
-Chinese, with English labels in the other catalogs.
+See what [project-bees](https://github.com/LIghtJUNction/project-bees) is doing
+from your Omarchy bar. Open the native panel to follow the current scan
+directory, priority or full scan pass, file counts, and live activity log.
+Progress entries appear during indexing; successful sharing records show
+which files began sharing storage and how many bytes were newly shared.
+Searchable repository and pair lists keep the cumulative history visible.
+
+The background service asks Btrfs to share physical storage for identical
+file ranges after the kernel compares their contents. File names and contents
+stay intact, and later writes use copy-on-write. This plugin displays the
+service's local statistics. Its lifetime counter measures newly shared
+logical bytes; current free disk space also depends on compression,
+snapshots, and later writes.
+
+The panel follows Omarchy's theme, text size, corner radius, and language.
+Existing controls support all 50 Omarchy languages. New progress and log
+labels are available in English, Simplified Chinese, and Traditional Chinese,
+with English labels in the other catalogs.
+
+**简介：** 在 Omarchy 状态栏中查看 Project Bees 的扫描目录、处理计数和运行日志。
+扫描进度与真正新增的共享量分别标明。后台服务让相同内容共用 Btrfs 数据块，
+文件名称与内容保持不变；插件只读统计，安装启用后无需额外配置。
 
 ## Install
 
-Requires Omarchy 4.5 or later and project-bees 0.1 or later. Activity reporting
-requires project-bees 0.1.1 or later. Priority-scan details and recent sharing
-records require project-bees 0.1.3 or later. On Arch and Omarchy:
+Install and enable the plugin with Omarchy's
+[standard plugin command](https://omarchy.org/manual/shell-plugins/#adding-a-plugin-from-git):
 
 ```sh
-yay -S project-bees
-systemctl --user enable --now project-bees.service
-omarchy plugin add https://github.com/LIghtJUNction/omarchy-project-bees --enable
+omarchy plugin add https://github.com/LIghtJUNction/omarchy-project-bees.git --enable
 ```
+
+No additional plugin configuration is required. The enabled plugin reads
+the service's standard statistics file automatically.
+
+**Prerequisites:** Omarchy 4.5 or later and a running
+[project-bees service](https://github.com/LIghtJUNction/project-bees#install-on-arch-linux).
+Use project-bees 0.1.3 or later for all progress and sharing-log features.
+The service is a separate dependency; the plugin does not install or start it.
+If statistics are not available yet, the panel shows a waiting state.
+Older service versions can still display their supported statistics.
 
 The dashboard opens from its bar widget or from
 `omarchy-shell shell summon io.github.lightjunction.project-bees`.
@@ -29,8 +50,8 @@ The dashboard opens from its bar widget or from
 | Control | Action |
 | --- | --- |
 | Bar widget | Toggle the dashboard |
-| Search field | Filter paths in the current list, including both sides of a log entry |
-| Deduplication log / Repositories / Repository pairs | Switch between recent sharing records and cumulative totals |
+| Search field | Filter paths in the current list, including scan directories and both sides of a sharing record |
+| Deduplication log / Repositories / Repository pairs | Switch between the live activity log and cumulative totals |
 | Esc, close button, or outside click | Close the dashboard |
 
 ## Languages
@@ -40,7 +61,7 @@ bar widget update immediately, including number and date formatting. Arabic,
 Hebrew, Persian, and Urdu mirror the interface; repository paths and pair
 directions keep their left-to-right order.
 
-Translation catalogs live in `i18n/`. Each catalog contains the same 34 keys
+Translation catalogs live in `i18n/`. Each catalog contains the same 38 keys
 as `en.json`, with numbered placeholders preserved. Omarchy falls back to English
 for an unknown language or a missing translation.
 
@@ -63,13 +84,22 @@ without activity data still displays its totals and reports progress as
 unavailable. Older activity snapshots remain usable without the new optional
 scan fields.
 
-The default **Deduplication log** tab shows up to 32 recent records, newest
-first. Each row contains the source path, destination path, time, and newly
-shared logical bytes. Consecutive ranges from the same file pair may be
-combined by the daemon. The log contains positive sharing results, not every
-candidate or rejected match. Records survive scan-phase changes and reset
-when the daemon restarts; cumulative totals remain persistent. A service
-version without this log displays an availability message.
+The default **Deduplication log** tab shows the latest real activity snapshot
+immediately, including while the first directory is still being indexed.
+Progress rows show the reported phase, scan directory, file and block counts,
+and snapshot time. Changes are retained as up to 32 in-memory progress rows;
+re-reading an unchanged snapshot adds no duplicate row. This history resets
+when the shell restarts and is not written to disk.
+
+Up to 32 successful sharing records from the daemon appear in the same
+chronological list, newest first. They are labeled **Newly shared** and show
+the source, destination, time, and positive newly shared logical bytes.
+Progress rows are separately labeled **Progress** and never claim shared
+bytes. Consecutive ranges from the same file pair may be combined by the
+daemon. These sharing records survive scan-phase changes and reset when the
+daemon restarts; cumulative totals remain persistent. The combined list has
+at most 64 rows. Older daemons with activity reporting still produce progress
+rows without the optional successful-sharing log.
 
 ## Data access
 
@@ -109,3 +139,10 @@ omarchy plugin validate .
 ```
 
 MIT license.
+
+## Visual identity
+
+The two honeycomb cells share one edge, reflecting the way identical file
+ranges share storage. The editable mark is in `assets/logo.svg`; the root
+`preview.webp` is the compact raster preview supported by the marketplace.
+Its vector source is in `assets/marketplace-preview.svg`.

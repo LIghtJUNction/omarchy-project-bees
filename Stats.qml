@@ -12,6 +12,7 @@ Item {
   readonly property string stateHome: configuredStateHome.startsWith("/") ? configuredStateHome : home + "/.local/state"
   property var snapshot: null
   property string error: ""
+  property var progressHistory: []
 
   FileView {
     id: view
@@ -23,6 +24,7 @@ Item {
       try {
         const report = JSON.parse(text())
         if (root.validReport(report)) {
+          root.observeProgress(report)
           root.snapshot = report
           root.error = ""
         } else {
@@ -95,6 +97,53 @@ Item {
       && typeof row.destination === "string" && validNumber(row.at) && row.at > 0
       && Math.floor(row.at) === row.at && isFinite(new Date(row.at * 1000).getTime())
       && validNumber(row.bytes) && row.bytes > 0 && Math.floor(row.bytes) === row.bytes).reverse()
+  }
+
+  function progressEntry(report) {
+    const value = activity(report)
+    if (!value || !validNumber(report.updatedAt) || report.updatedAt <= 0
+      || !isFinite(new Date(report.updatedAt * 1000).getTime())) return null
+    const row = {
+      kind: "progress", at: report.updatedAt, phase: value.phase,
+      scanKind: scanKind(report), scanRoot: scanRoot(report),
+      scannedFiles: value.scannedFiles, hashedFiles: value.hashedFiles,
+      indexedChunks: value.indexedChunks, processedFiles: value.processedFiles,
+      nextScanAt: value.nextScanAt,
+    }
+    // Re-reading an unchanged snapshot must not manufacture another log entry.
+    row.key = JSON.stringify([report.startedAt, value.phaseStartedAt, row.phase,
+      row.scanKind, row.scanRoot, value.repositories, row.scannedFiles, row.hashedFiles,
+      row.indexedChunks, row.processedFiles, value.matchedRanges, value.rejectedRanges,
+      row.nextScanAt])
+    return row
+  }
+
+  function observeProgress(report) {
+    const row = progressEntry(report)
+    if (!row) return
+    const last = progressHistory.length ? progressHistory[progressHistory.length - 1] : null
+    if (last && last.key === row.key) {
+      if (row.at > last.at) progressHistory = progressHistory.slice(0, -1).concat([row])
+      return
+    }
+    progressHistory = progressHistory.concat([row]).slice(-32)
+  }
+
+  function logEntries(report, history) {
+    if (!report) return []
+    const progress = Array.isArray(history) ? history.slice(-32) : []
+    const latest = progressEntry(report)
+    // Show the latest actual snapshot immediately, including on a fresh open.
+    if (latest) {
+      const existing = progress.findIndex(row => row.key === latest.key)
+      if (existing < 0) progress.push(latest)
+      else if (latest.at > progress[existing].at) progress[existing] = latest
+    }
+    const shared = events(report).map(row => ({kind: "shared", at: row.at,
+      source: row.source, destination: row.destination, bytes: row.bytes}))
+    const combined = shared.concat(progress.slice(-32).reverse())
+    return combined.map((row, index) => ({row: row, index: index}))
+      .sort((a, b) => b.row.at - a.row.at || a.index - b.index).map(entry => entry.row)
   }
 
   function duration(seconds) {
