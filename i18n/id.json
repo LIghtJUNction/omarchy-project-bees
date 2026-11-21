@@ -19,5 +19,18 @@
   "activityIdle": "Menunggu · pemindaian berikutnya %1",
   "activityStopped": "Dihentikan",
   "activityUnavailable": "Progres tidak tersedia",
-  "activityStale": "Terakhir diperbarui %1 menit lalu"
+  "activityStale": "Terakhir diperbarui %1 menit lalu",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

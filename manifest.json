@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "io.github.lightjunction.project-bees",
   "name": "Project Bees",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "LIghtJUNction",
   "license": "MIT",
-  "description": "Btrfs deduplication dashboard with cumulative bytes, per-repository totals, and cross-repository pairs.",
+  "description": "Btrfs deduplication dashboard with live scan progress, recent sharing records, and cumulative totals.",
   "kinds": ["bar-widget", "panel"],
   "entryPoints": {"barWidget": "BarWidget.qml", "panel": "Panel.qml"},
   "barWidget": {
     "displayName": "Project Bees",
-    "description": "Open the Git repository deduplication dashboard.",
+    "description": "Open the Btrfs deduplication dashboard.",
     "category": "System",
     "defaultSection": "right",
     "allowMultiple": false

@@ -19,5 +19,18 @@
   "activityIdle": "En espera · próximo análisis: %1",
   "activityStopped": "Detenido",
   "activityUnavailable": "El progreso no está disponible",
-  "activityStale": "Última actualización hace %1 min"
+  "activityStale": "Última actualización hace %1 min",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

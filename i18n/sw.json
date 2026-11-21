@@ -19,5 +19,18 @@
   "activityIdle": "Inasubiri · uchanganuzi unaofuata %1",
   "activityStopped": "Imesimamishwa",
   "activityUnavailable": "Maendeleo hayapatikani",
-  "activityStale": "Ilisasishwa mara ya mwisho dakika %1 zilizopita"
+  "activityStale": "Ilisasishwa mara ya mwisho dakika %1 zilizopita",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

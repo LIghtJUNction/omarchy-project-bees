@@ -41,7 +41,7 @@ Item {
       objectName: "dashboard"
       anchors.centerIn: parent
       width: Math.min(880, overlay.width - 32)
-      height: Math.min(740, overlay.height - 32)
+      height: Math.min(800, overlay.height - 32)
       snapshot: Stats.snapshot
       error: Stats.error
       onCloseRequested: root.dismiss()

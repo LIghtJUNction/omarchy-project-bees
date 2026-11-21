@@ -19,5 +19,18 @@
   "activityIdle": "Kutilmoqda · keyingi tekshiruv %1",
   "activityStopped": "Toʻxtatilgan",
   "activityUnavailable": "Jarayon haqida maʼlumot mavjud emas",
-  "activityStale": "Soʻnggi yangilanish %1 daqiqa oldin"
+  "activityStale": "Soʻnggi yangilanish %1 daqiqa oldin",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

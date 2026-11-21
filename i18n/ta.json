@@ -19,5 +19,18 @@
   "activityIdle": "காத்திருக்கிறது · அடுத்த ஸ்கேன் %1",
   "activityStopped": "நிறுத்தப்பட்டது",
   "activityUnavailable": "முன்னேற்றத் தகவல் கிடைக்கவில்லை",
-  "activityStale": "கடைசிப் புதுப்பிப்பு %1 நிமிடங்களுக்கு முன்பு"
+  "activityStale": "கடைசிப் புதுப்பிப்பு %1 நிமிடங்களுக்கு முன்பு",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

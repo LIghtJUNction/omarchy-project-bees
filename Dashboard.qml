@@ -8,7 +8,7 @@ FocusScope {
 
   property var snapshot: null
   property string error: ""
-  property int tab: 0
+  property int tab: 2
   readonly property bool rightToLeft: Commons.I18n.rightToLeft
   readonly property var locale: Qt.locale(Commons.I18n.formatLocale)
   readonly property color accent: Commons.Color.accent
@@ -23,9 +23,12 @@ FocusScope {
   readonly property int smallSize: Math.max(12, Commons.Style.font.bodySmall)
   readonly property var projects: snapshot ? snapshot.projects : []
   readonly property var pairs: snapshot ? snapshot.pairs : []
+  readonly property var events: Stats.events(snapshot)
   readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0)
   readonly property var rows: filteredRows()
   readonly property var activity: Stats.activity(snapshot)
+  readonly property string scanKind: Stats.scanKind(snapshot)
+  readonly property string scanRoot: Stats.scanRoot(snapshot)
   property double nowSeconds: Date.now() / 1000
   readonly property bool activityStale: activity !== null && activity.phase !== "stopped"
     && nowSeconds > Math.max(snapshot.updatedAt + 180,
@@ -41,7 +44,7 @@ FocusScope {
   }
 
   Timer {
-    interval: 15000
+    interval: 1000
     repeat: true
     running: root.visible && root.snapshot !== null
     onTriggered: root.nowSeconds = Date.now() / 1000
@@ -58,13 +61,9 @@ FocusScope {
       Math.max(1, Math.floor((nowSeconds - snapshot.updatedAt) / 60)), 0))
     switch (activity.phase) {
     case "scanning":
-      return strings.t("activityScanning")
-        .arg(Commons.I18n.formatNumber(activity.hashedFiles, 0))
-        .arg(Commons.I18n.formatNumber(activity.indexedChunks, 0))
+      return strings.t("activityIndexing")
     case "deduplicating":
-      return strings.t("activityDeduplicating")
-        .arg(Commons.I18n.formatNumber(activity.processedFiles, 0))
-        .arg(Commons.I18n.formatNumber(activity.matchedRanges, 0))
+      return strings.t("activityWorking")
     case "idle":
       return strings.t("activityIdle").arg(new Date(activity.nextScanAt * 1000)
         .toLocaleTimeString(locale, "HH:mm"))
@@ -75,10 +74,11 @@ FocusScope {
   }
 
   function filteredRows() {
-    const source = tab === 0 ? projects : pairs
+    const source = tab === 0 ? projects : tab === 1 ? pairs : events
     const query = search ? search.text.trim().toLowerCase() : ""
     if (!query) return source
-    return source.filter(row => (tab === 0 ? row.path : row.a + " " + row.b).toLowerCase().includes(query))
+    return source.filter(row => (tab === 0 ? row.path : tab === 1 ? row.a + " " + row.b
+      : row.source + " " + row.destination).toLowerCase().includes(query))
   }
 
   function caption(path) {
@@ -283,27 +283,102 @@ FocusScope {
       id: filters
       Layout.fillWidth: true
       spacing: 8
-      Label {
-        objectName: "activityStatus"
+      ColumnLayout {
         Layout.fillWidth: true
         visible: root.snapshot !== null
-        text: root.activityText()
-        color: root.dim
-        font.pixelSize: root.smallSize
-        wrapMode: Text.WordWrap
+        spacing: 8
+
+        RowLayout {
+          Layout.fillWidth: true
+          spacing: 12
+          Label {
+            objectName: "activityStatus"
+            Layout.fillWidth: true
+            text: root.activityText()
+            color: root.dim
+            font.pixelSize: root.smallSize
+            wrapMode: Text.WordWrap
+          }
+          Label {
+            objectName: "scanKind"
+            visible: root.scanKind !== ""
+            text: strings.t(root.scanKind === "priority" ? "activityPriority" : "activityFull")
+            color: root.accent
+            font.pixelSize: root.smallSize
+          }
+          Label {
+            objectName: "phaseElapsed"
+            visible: root.activity !== null && !root.activityStale && root.activity.phase !== "stopped"
+            text: root.activity ? strings.t("elapsed").arg(Stats.duration(
+              root.nowSeconds - root.activity.phaseStartedAt)) : ""
+            color: root.dim
+            font.pixelSize: root.smallSize
+          }
+        }
+
+        Label {
+          objectName: "scanRoot"
+          Layout.fillWidth: true
+          visible: root.scanRoot !== ""
+          text: root.ltr(root.caption(root.scanRoot))
+          color: root.dim
+          font.pixelSize: root.smallSize
+          elide: Text.ElideMiddle
+        }
+
+        GridLayout {
+          Layout.fillWidth: true
+          visible: root.activity !== null
+          columns: root.width < 620 ? 2 : 4
+          columnSpacing: 20
+          rowSpacing: 8
+          Repeater {
+            model: root.activity ? [
+              { name: strings.t("scannedFiles"), value: root.activity.scannedFiles },
+              { name: strings.t("hashedFiles"), value: root.activity.hashedFiles },
+              { name: strings.t("indexedChunks"), value: root.activity.indexedChunks },
+              { name: strings.t("processedFiles"), value: root.activity.processedFiles },
+            ] : []
+            delegate: ColumnLayout {
+              required property var modelData
+              Layout.fillWidth: true
+              Layout.preferredWidth: 1
+              spacing: 3
+              Label {
+                Layout.fillWidth: true
+                text: Commons.I18n.formatNumber(modelData.value, 0)
+                font.pixelSize: Math.max(18, Commons.Style.font.heading)
+                font.weight: Font.DemiBold
+              }
+              Label {
+                Layout.fillWidth: true
+                text: modelData.name
+                color: root.dim
+                font.pixelSize: root.smallSize
+                wrapMode: Text.WordWrap
+              }
+            }
+          }
+        }
       }
       RowLayout {
         Layout.fillWidth: true
         spacing: 8
         Tab {
+          objectName: "eventsTab"
+          Layout.maximumWidth: (filters.width - 16) / 3
+          index: 2
+          text: strings.t("events")
+        }
+        Tab {
           objectName: "projectsTab"
-          Layout.maximumWidth: (filters.width - 8) / 2
+          Layout.maximumWidth: (filters.width - 16) / 3
           index: 0
           text: strings.t("repos")
         }
         Tab {
           objectName: "pairsTab"
-          Layout.maximumWidth: (filters.width - 8) / 2
+          Layout.maximumWidth: (filters.width - 16) / 3
           index: 1
           text: strings.t("pairs")
         }
@@ -318,7 +393,7 @@ FocusScope {
         LayoutMirroring.childrenInherit: true
         horizontalAlignment: text.length > 0 || !root.rightToLeft ? Text.AlignLeft : Text.AlignRight
         selectByMouse: true
-        placeholderText: strings.t("search")
+        placeholderText: strings.t(root.tab === 2 ? "eventSearch" : "search")
         placeholderTextColor: root.dim
         color: root.ink
         selectionColor: Qt.rgba(root.accent.r, root.accent.g, root.accent.b, 0.25)
@@ -355,6 +430,7 @@ FocusScope {
       delegate: Rectangle {
         id: entry
         required property var modelData
+        readonly property bool isEvent: row.destination !== undefined
         readonly property bool isPair: row.a !== undefined
         readonly property var row: modelData
         width: list.width - 8
@@ -381,18 +457,21 @@ FocusScope {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
               elide: Text.ElideMiddle
-              font.weight: Font.DemiBold
-              font.pixelSize: Math.max(15, Commons.Style.font.subtitle)
-              text: entry.isPair ? root.ltr(root.ltr(root.leaf(entry.row.a)) + "  ↔  " + root.ltr(root.leaf(entry.row.b)))
+              color: entry.isEvent ? root.dim : root.ink
+              font.weight: entry.isEvent ? Font.Normal : Font.DemiBold
+              font.pixelSize: entry.isEvent ? root.smallSize : Math.max(15, Commons.Style.font.subtitle)
+              text: entry.isEvent ? root.ltr(root.caption(entry.row.source))
+                : entry.isPair ? root.ltr(root.ltr(root.leaf(entry.row.a)) + "  ↔  " + root.ltr(root.leaf(entry.row.b)))
                 : root.ltr(root.leaf(entry.row.path))
             }
             Label {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
               elide: Text.ElideMiddle
-              color: root.dim
-              font.pixelSize: root.smallSize
-              text: entry.isPair ? root.ltr(root.ltr(root.caption(entry.row.a)) + "  ↔  " + root.ltr(root.caption(entry.row.b)))
+              color: entry.isEvent ? root.ink : root.dim
+              font.pixelSize: entry.isEvent ? root.bodySize : root.smallSize
+              text: entry.isEvent ? root.ltr("→ " + root.caption(entry.row.destination))
+                : entry.isPair ? root.ltr(root.ltr(root.caption(entry.row.a)) + "  ↔  " + root.ltr(root.caption(entry.row.b)))
                 : root.ltr(root.caption(entry.row.path))
             }
           }
@@ -405,19 +484,20 @@ FocusScope {
             Label {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
-              color: entry.row.bytes > 0 ? root.ink : root.dim
+              color: entry.isEvent ? root.accent : entry.row.bytes > 0 ? root.ink : root.dim
               font.pixelSize: Math.max(17, Commons.Style.font.heading)
               font.weight: entry.row.bytes > 0 ? Font.DemiBold : Font.Normal
-              text: root.ltr(Stats.format(entry.row.bytes))
+              text: root.ltr((entry.isEvent ? "+ " : "") + Stats.format(entry.row.bytes))
             }
             Label {
               Layout.fillWidth: true
               horizontalAlignment: root.rightToLeft ? Text.AlignLeft : Text.AlignRight
-              visible: entry.isPair || entry.row.sourceBytes > 0
+              visible: entry.isEvent || entry.isPair || entry.row.sourceBytes > 0
               color: root.dim
               font.pixelSize: root.smallSize
               elide: Text.ElideRight
-              text: entry.isPair ?
+              text: entry.isEvent ? new Date(entry.row.at * 1000).toLocaleTimeString(root.locale, "HH:mm:ss")
+                : entry.isPair ?
                 root.ltr("← " + Stats.format(entry.row.toA) + "  ·  " +
                   Stats.format(entry.row.bytes - entry.row.toA) + " →") :
                 strings.t("supplied").arg(root.ltr(Stats.format(entry.row.sourceBytes)))
@@ -436,7 +516,8 @@ FocusScope {
         color: root.dim
         text: !root.snapshot ? strings.t(root.error || "noData")
           : search.text.trim() ? strings.t("noMatch")
-          : root.tab === 0 ? strings.t("noRepos") : strings.t("noPairs")
+          : root.tab === 0 ? strings.t("noRepos") : root.tab === 1 ? strings.t("noPairs")
+          : strings.t(Array.isArray(root.snapshot.recentEvents) ? "noEvents" : "eventsUnavailable")
       }
     }
 
@@ -447,7 +528,7 @@ FocusScope {
       Label {
         Layout.fillWidth: true
         text: root.snapshot ? strings.t("clock").arg(new Date(root.snapshot.updatedAt * 1000)
-          .toLocaleTimeString(root.locale, "HH:mm")) : ""
+          .toLocaleTimeString(root.locale, "HH:mm:ss")) : ""
         color: root.dim
         font.pixelSize: root.smallSize
         elide: Text.ElideRight

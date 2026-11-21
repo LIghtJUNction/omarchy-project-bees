@@ -19,5 +19,18 @@
   "activityIdle": "Odotetaan · seuraava tarkistus %1",
   "activityStopped": "Pysäytetty",
   "activityUnavailable": "Edistymistietoja ei ole saatavilla",
-  "activityStale": "Viimeksi päivitetty %1 min sitten"
+  "activityStale": "Viimeksi päivitetty %1 min sitten",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }
