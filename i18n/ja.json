@@ -19,5 +19,18 @@
   "activityIdle": "待機中 · 次のスキャン %1",
   "activityStopped": "停止中",
   "activityUnavailable": "進捗情報を取得できません",
-  "activityStale": "最終更新は %1 分前"
+  "activityStale": "最終更新は %1 分前",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

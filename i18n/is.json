@@ -19,5 +19,18 @@
   "activityIdle": "Bíð · næsta skönnun %1",
   "activityStopped": "Stöðvað",
   "activityUnavailable": "Framvinda er ekki tiltæk",
-  "activityStale": "Síðast uppfært fyrir %1 mín."
+  "activityStale": "Síðast uppfært fyrir %1 mín.",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

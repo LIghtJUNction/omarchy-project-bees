@@ -19,5 +19,18 @@
   "activityIdle": "等待中 · 下次掃描 %1",
   "activityStopped": "已停止",
   "activityUnavailable": "暫無執行進度",
-  "activityStale": "上次更新於 %1 分鐘前"
+  "activityStale": "上次更新於 %1 分鐘前",
+  "activityPriority": "優先掃描輪次",
+  "activityFull": "完整掃描輪次",
+  "activityIndexing": "正在建立索引",
+  "activityWorking": "正在去重",
+  "elapsed": "已執行 %1",
+  "scannedFiles": "已掃描檔案",
+  "hashedFiles": "已讀取檔案",
+  "indexedChunks": "內容資料區塊",
+  "processedFiles": "已檢查檔案",
+  "events": "去重紀錄",
+  "eventSearch": "篩選來源或目標路徑",
+  "noEvents": "新增共享範圍會顯示在這裡",
+  "eventsUnavailable": "此服務版本尚未提供最近去重紀錄"
 }

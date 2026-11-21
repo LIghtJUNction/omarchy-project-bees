@@ -19,5 +19,18 @@
   "activityIdle": "Gaida · nākamā skenēšana %1",
   "activityStopped": "Apturēts",
   "activityUnavailable": "Norise nav pieejama",
-  "activityStale": "Pēdējais atjauninājums pirms %1 min"
+  "activityStale": "Pēdējais atjauninājums pirms %1 min",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

@@ -19,5 +19,18 @@
   "activityIdle": "انتظار میں · اگلی اسکیننگ %1",
   "activityStopped": "رکا ہوا",
   "activityUnavailable": "پیش رفت دستیاب نہیں ہے",
-  "activityStale": "آخری تازہ کاری %1 منٹ پہلے"
+  "activityStale": "آخری تازہ کاری %1 منٹ پہلے",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

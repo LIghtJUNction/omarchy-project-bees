@@ -19,5 +19,18 @@
   "activityIdle": "대기 중 · 다음 검사 %1",
   "activityStopped": "중지됨",
   "activityUnavailable": "진행 정보를 확인할 수 없습니다",
-  "activityStale": "마지막 업데이트: %1분 전"
+  "activityStale": "마지막 업데이트: %1분 전",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

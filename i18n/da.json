@@ -19,5 +19,18 @@
   "activityIdle": "Venter · næste scanning %1",
   "activityStopped": "Stoppet",
   "activityUnavailable": "Fremdrift er ikke tilgængelig",
-  "activityStale": "Sidst opdateret for %1 min siden"
+  "activityStale": "Sidst opdateret for %1 min siden",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

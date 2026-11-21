@@ -19,5 +19,18 @@
   "activityIdle": "Bekleniyor · sonraki tarama %1",
   "activityStopped": "Durduruldu",
   "activityUnavailable": "İlerleme bilgisi mevcut değil",
-  "activityStale": "Son güncelleme %1 dk önce"
+  "activityStale": "Son güncelleme %1 dk önce",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }

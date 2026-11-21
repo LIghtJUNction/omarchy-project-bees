@@ -8,7 +8,8 @@ Item {
   id: root
 
   readonly property string home: Quickshell.env("HOME")
-  readonly property string stateHome: Quickshell.env("XDG_STATE_HOME") || home + "/.local/state"
+  readonly property string configuredStateHome: Quickshell.env("XDG_STATE_HOME") || ""
+  readonly property string stateHome: configuredStateHome.startsWith("/") ? configuredStateHome : home + "/.local/state"
   property var snapshot: null
   property string error: ""
 
@@ -40,7 +41,7 @@ Item {
   }
 
   Timer {
-    interval: 30000
+    interval: 10000
     repeat: true
     running: true
     onTriggered: root.reload()
@@ -74,6 +75,35 @@ Item {
     if (value.phase === "idle" && (value.nextScanAt === 0
       || !isFinite(new Date(value.nextScanAt * 1000).getTime()))) return null
     return value
+  }
+
+  function scanKind(report) {
+    const value = activity(report)
+    return value && ["priority", "full"].includes(value.scanKind) ? value.scanKind : ""
+  }
+
+  function scanRoot(report) {
+    const value = activity(report)
+    return value && typeof value.scanRoot === "string" ? value.scanRoot : ""
+  }
+
+  // Optional live records must not invalidate the cumulative statistics.
+  function events(report) {
+    if (!report || !Array.isArray(report.recentEvents)) return []
+    return report.recentEvents.slice(-32).filter(row => row !== null
+      && typeof row === "object" && typeof row.source === "string"
+      && typeof row.destination === "string" && validNumber(row.at) && row.at > 0
+      && Math.floor(row.at) === row.at && isFinite(new Date(row.at * 1000).getTime())
+      && validNumber(row.bytes) && row.bytes > 0 && Math.floor(row.bytes) === row.bytes).reverse()
+  }
+
+  function duration(seconds) {
+    const total = Math.max(0, Math.floor(Number(seconds) || 0))
+    const hours = Math.floor(total / 3600)
+    const minutes = Math.floor(total / 60) % 60
+    const remaining = total % 60
+    const two = value => (value < 10 ? "0" : "") + value
+    return (hours ? two(hours) + ":" : "") + two(minutes) + ":" + two(remaining)
   }
 
   function size(bytes) {

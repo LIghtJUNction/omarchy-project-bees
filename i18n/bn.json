@@ -19,5 +19,18 @@
   "activityIdle": "অপেক্ষমাণ · পরবর্তী স্ক্যান %1",
   "activityStopped": "বন্ধ হয়েছে",
   "activityUnavailable": "অগ্রগতির তথ্য পাওয়া যাচ্ছে না",
-  "activityStale": "সর্বশেষ হালনাগাদ %1 মিনিট আগে"
+  "activityStale": "সর্বশেষ হালনাগাদ %1 মিনিট আগে",
+  "activityPriority": "Priority pass",
+  "activityFull": "Full pass",
+  "activityIndexing": "Indexing",
+  "activityWorking": "Deduplicating",
+  "elapsed": "Elapsed %1",
+  "scannedFiles": "Visited files",
+  "hashedFiles": "Files read",
+  "indexedChunks": "Content blocks",
+  "processedFiles": "Files checked",
+  "events": "Deduplication log",
+  "eventSearch": "Filter source or destination paths",
+  "noEvents": "Newly shared ranges will appear here",
+  "eventsUnavailable": "Recent records are unavailable in this service version"
 }
