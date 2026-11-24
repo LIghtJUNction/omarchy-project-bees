@@ -36,5 +36,6 @@
   "logProgress": "Progress",
   "logShared": "Newly shared",
   "logCounters": "Visited %1 · Read %2 · Blocks %3 · Checked %4",
+  "alreadySharedRanges": "දැනටමත් බෙදා ඇති නිසා මඟ හැරිය පරාස: %1",
   "logNoRoot": "Directory not reported"
 }

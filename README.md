@@ -17,9 +17,8 @@ logical bytes; current free disk space also depends on compression,
 snapshots, and later writes.
 
 The panel follows Omarchy's theme, text size, corner radius, and language.
-Existing controls support all 50 Omarchy languages. New progress and log
-labels are available in English, Simplified Chinese, and Traditional Chinese,
-with English labels in the other catalogs.
+The skipped-range counter is translated into all 50 Omarchy languages. Some
+of the other live log labels use English outside the Chinese locales.
 
 **简介：** 在 Omarchy 状态栏中查看 Project Bees 的扫描目录、处理计数和运行日志。
 扫描进度与真正新增的共享量分别标明。后台服务让相同内容共用 Btrfs 数据块，
@@ -39,7 +38,10 @@ the service's standard statistics file automatically.
 
 **Prerequisites:** Omarchy 4.5 or later and a running
 [project-bees service](https://github.com/LIghtJUNction/project-bees#install-on-arch-linux).
-Use project-bees 0.1.3 or later for all progress and sharing-log features.
+Use project-bees 0.1.3 or later for scan progress and sharing-log features.
+The skipped-range counter requires project-bees 0.1.7 or later. You can
+[build the daemon from source](https://github.com/LIghtJUNction/project-bees#build-and-run)
+if your package is older.
 The service is a separate dependency; the plugin does not install or start it.
 If statistics are not available yet, the panel shows a waiting state.
 Older service versions can still display their supported statistics.
@@ -61,8 +63,8 @@ bar widget update immediately, including number and date formatting. Arabic,
 Hebrew, Persian, and Urdu mirror the interface; repository paths and pair
 directions keep their left-to-right order.
 
-Translation catalogs live in `i18n/`. Each catalog contains the same 38 keys
-as `en.json`, with numbered placeholders preserved. Omarchy falls back to English
+Translation catalogs live in `i18n/`. Each catalog contains the same keys as
+`en.json`, with numbered placeholders preserved. Omarchy falls back to English
 for an unknown language or a missing translation.
 
 ## Activity
@@ -73,6 +75,8 @@ content blocks indexed, and files checked for deduplication. When the daemon
 provides them, it also shows the priority or full scan pass, the current
 directory, and the time spent in the current phase. These counters describe
 the current pass, while the large newly shared total keeps its history.
+During deduplication, the skipped-range counter shows ranges that already
+shared the same Btrfs blocks. Progress rows retain this count when reported.
 
 The daemon indexes a scan range before deduplicating its matches. With a
 priority scan, high-priority ranges can produce sharing records before the

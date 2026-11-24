@@ -36,5 +36,6 @@
   "logProgress": "Progress",
   "logShared": "Newly shared",
   "logCounters": "Visited %1 · Read %2 · Blocks %3 · Checked %4",
+  "alreadySharedRanges": "Julat yang dilangkau kerana sudah dikongsi: %1",
   "logNoRoot": "Directory not reported"
 }

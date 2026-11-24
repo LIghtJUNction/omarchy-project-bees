@@ -36,5 +36,6 @@
   "logProgress": "執行進度",
   "logShared": "新增共享",
   "logCounters": "掃描 %1 · 讀取 %2 · 資料區塊 %3 · 檢查 %4",
+  "alreadySharedRanges": "已略過共享區段 %1 個",
   "logNoRoot": "未回報掃描目錄"
 }

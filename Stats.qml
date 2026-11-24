@@ -89,6 +89,12 @@ Item {
     return value && typeof value.scanRoot === "string" ? value.scanRoot : ""
   }
 
+  function alreadySharedRanges(value) {
+    if (!value || !Number.isSafeInteger(value.alreadySharedRanges) || value.alreadySharedRanges < 0
+      || value.alreadySharedRanges > value.matchedRanges) return null
+    return value.alreadySharedRanges
+  }
+
   // Optional live records must not invalidate the cumulative statistics.
   function events(report) {
     if (!report || !Array.isArray(report.recentEvents)) return []
@@ -108,13 +114,13 @@ Item {
       scanKind: scanKind(report), scanRoot: scanRoot(report),
       scannedFiles: value.scannedFiles, hashedFiles: value.hashedFiles,
       indexedChunks: value.indexedChunks, processedFiles: value.processedFiles,
-      nextScanAt: value.nextScanAt,
+      nextScanAt: value.nextScanAt, alreadySharedRanges: alreadySharedRanges(value),
     }
     // Re-reading an unchanged snapshot must not manufacture another log entry.
     row.key = JSON.stringify([report.startedAt, value.phaseStartedAt, row.phase,
       row.scanKind, row.scanRoot, value.repositories, row.scannedFiles, row.hashedFiles,
       row.indexedChunks, row.processedFiles, value.matchedRanges, value.rejectedRanges,
-      row.nextScanAt])
+      row.nextScanAt, row.alreadySharedRanges])
     return row
   }
 

@@ -36,5 +36,6 @@
   "logProgress": "Progress",
   "logShared": "Newly shared",
   "logCounters": "Visited %1 · Read %2 · Blocks %3 · Checked %4",
+  "alreadySharedRanges": "이미 공유되어 건너뛴 범위: %1",
   "logNoRoot": "Directory not reported"
 }

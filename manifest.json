@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.lightjunction.project-bees",
   "name": "Project Bees",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "LIghtJUNction",
   "license": "MIT",
   "description": "Follow project-bees scan progress, live activity logs, and newly shared Btrfs data from your Omarchy bar.",

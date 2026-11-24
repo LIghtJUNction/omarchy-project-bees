@@ -36,5 +36,6 @@
   "logProgress": "运行进度",
   "logShared": "新增共享",
   "logCounters": "扫描 %1 · 读取 %2 · 数据块 %3 · 检查 %4",
+  "alreadySharedRanges": "已跳过共享区间 %1 个",
   "logNoRoot": "未报告扫描目录"
 }

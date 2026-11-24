@@ -27,6 +27,7 @@ FocusScope {
   readonly property var total: Stats.size(snapshot ? snapshot.totalBytes : 0)
   readonly property var rows: filteredRows()
   readonly property var activity: Stats.activity(snapshot)
+  readonly property var alreadySharedRanges: Stats.alreadySharedRanges(activity)
   readonly property string scanKind: Stats.scanKind(snapshot)
   readonly property string scanRoot: Stats.scanRoot(snapshot)
   property double nowSeconds: Date.now() / 1000
@@ -384,6 +385,18 @@ FocusScope {
             }
           }
         }
+
+        Label {
+          objectName: "alreadySharedRanges"
+          Layout.fillWidth: true
+          visible: text !== ""
+          text: root.alreadySharedRanges !== null && (root.alreadySharedRanges > 0
+            || root.activity.phase === "deduplicating")
+            ? strings.t("alreadySharedRanges").arg(Commons.I18n.formatNumber(root.alreadySharedRanges, 0)) : ""
+          color: root.dim
+          font.pixelSize: root.smallSize
+          wrapMode: Text.WordWrap
+        }
       }
       RowLayout {
         Layout.fillWidth: true
@@ -510,6 +523,16 @@ FocusScope {
               font.pixelSize: root.smallSize
               wrapMode: Text.WordWrap
               text: entry.isProgress ? root.progressCounters(entry.row) : ""
+            }
+            Label {
+              Layout.fillWidth: true
+              visible: text !== ""
+              horizontalAlignment: root.rightToLeft ? Text.AlignRight : Text.AlignLeft
+              color: root.dim
+              font.pixelSize: root.smallSize
+              wrapMode: Text.WordWrap
+              text: entry.isProgress && entry.row.alreadySharedRanges > 0
+                ? strings.t("alreadySharedRanges").arg(Commons.I18n.formatNumber(entry.row.alreadySharedRanges, 0)) : ""
             }
           }
 
